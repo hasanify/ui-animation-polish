@@ -48,6 +48,7 @@ export function parseDurations(line) {
 const LOOPING_OK = /spin|rotate|shimmer|marquee|pulse|skeleton|progress|caret|blink/i;
 const LONG_UI_OK = /page|route|screen|onboarding|splash|hero|transition-name|view-transition/i;
 const PLAYFUL_OK = /confetti|celebrat|playful|onboarding|party|achievement/i;
+const ATTENTION_OK = /pulse|success|celebrat|confetti|attention|wiggle/i;
 
 /**
  * Each check runs per line. `test` returns true when the line violates the rule.
@@ -71,7 +72,7 @@ export const CHECKS = [
     test: (line) => {
       if (!/transition|animation|duration/.test(line)) return false;
       if (/--[\w-]+\s*:/.test(line)) return false; // token definitions may be long
-      if (LONG_UI_OK.test(line)) return false;
+      if (LONG_UI_OK.test(line) || ATTENTION_OK.test(line)) return false;
       return parseDurations(line).some((ms) => ms > 300 && ms <= 1000);
     },
     message: "Repeated UI over 300ms reads as lag.",
@@ -84,6 +85,7 @@ export const CHECKS = [
     test: (line) => {
       if (!/transition|animation|duration/.test(line)) return false;
       if (/--[\w-]+\s*:/.test(line)) return false;
+      if (ATTENTION_OK.test(line)) return false;
       return parseDurations(line).some((ms) => ms > 1000);
     },
     message: "Over one second is a scene change, not a UI interaction.",

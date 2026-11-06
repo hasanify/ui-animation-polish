@@ -1,0 +1,92 @@
+/* ui-animation-polish — motion tokens
+ * Drop into a global stylesheet, or map the values into your theme.
+ * Every value matches the defaults in SKILL.md.
+ */
+
+:root {
+  /* Duration. Exits are shorter than entrances (rule 15). */
+  --dur-instant: 100ms;
+  --dur-fast: 150ms;
+  --dur-base: 200ms;
+  --dur-slow: 250ms;
+  --dur-page: 400ms;
+  --dur-exit: 160ms;
+
+  /* Easing. The strong ease-out is the house curve (rule 1). */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-in: cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-linear: linear;
+
+  /* Stagger (rule 3). */
+  --stagger-row: 30ms;
+  --stagger-cap: 10;
+
+  /* Physicality (rules 4, 5, 8). */
+  --press-scale: 0.97;
+  --knob-stretch: 1.12;
+  --success-peak: 1.06;
+}
+
+/* Entrances get the strong ease-out; exits get the faster, mirrored version. */
+.motion-enter {
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.motion-exit {
+  transition:
+    opacity var(--dur-exit) var(--ease-in),
+    transform var(--dur-exit) var(--ease-in);
+}
+
+/* Press feedback. Never scale a disabled control (rule 4). */
+.motion-press {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.motion-press:active:not(:disabled) {
+  transform: scale(var(--press-scale));
+}
+
+/* One-shot confirmation. Loop only for indeterminate progress (rule 8). */
+@keyframes motion-pulse-once {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(var(--success-peak));
+  }
+}
+
+.motion-pulse-once {
+  animation: motion-pulse-once 350ms var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Keep opacity and colour; remove travel, scale, stagger and loops. */
+  .motion-enter,
+  .motion-exit,
+  .motion-press {
+    transition-duration: 1ms !important;
+    transition-property: opacity, color, background-color, border-color !important;
+  }
+
+  .motion-press:active:not(:disabled) {
+    transform: none;
+  }
+
+  .motion-pulse-once {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

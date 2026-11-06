@@ -40,7 +40,11 @@ export function parseDurations(line) {
   }
   if (durations.length === 0) {
     const motion = line.match(/\bduration\s*:\s*(\d*\.?\d+)\s*(?=[,;}])/);
-    if (motion) durations.push(Number(motion[1]) * 1000);
+    if (motion) {
+      const value = Number(motion[1]);
+      // Unitless is seconds in Motion but milliseconds in WAAPI; small values are seconds.
+      durations.push(value <= 10 ? value * 1000 : value);
+    }
   }
   return durations;
 }

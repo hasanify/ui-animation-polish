@@ -30,6 +30,8 @@ test("ease-in is flagged but ease-in-out is not", () => {
 test("durations above 300ms are flagged, and seconds are converted", () => {
   assert.ok(has(".x { transition: opacity 600ms ease-out; }", "duration-long"));
   assert.ok(has("<motion.div transition={{ duration: 0.6 }} />", "duration-long"));
+  assert.ok(!has("element.animate(frames, { duration: 300 });", "duration-long"));
+  assert.ok(has("element.animate(frames, { duration: 1500 });", "duration-very-long"));
   assert.ok(!has(".x { transition: opacity 250ms ease-out; }", "duration-long"));
   assert.ok(!has(".pulse { animation: pop 350ms ease-out; }", "duration-long"));
   assert.deepEqual(parseDurations("transform 0.25s ease-out"), [250]);

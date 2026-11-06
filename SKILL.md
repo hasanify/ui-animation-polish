@@ -1,6 +1,6 @@
 ---
 name: ui-animation-polish
-description: Detailed rules for making UI animations and micro-interactions feel polished, with exact durations, easings, scales, transform origins and copy-ready CSS / Motion (Framer Motion) code. Use whenever the user is writing, reviewing or fixing UI motion (CSS transitions, Framer Motion / Motion, React, SwiftUI, dropdowns, popovers, modals, buttons, toggles, tabs, lists, drag interactions), or says an animation feels off, janky, slow, floaty, cheap, robotic or "not smooth", even if they never say "animation guidelines".
+description: Detailed rules for making UI animations and micro-interactions feel polished, with exact durations, easings, scales, transform origins and copy-ready CSS / Motion (Framer Motion) code. Ships a zero-dependency auditor, motion tokens, presets, references and interactive before/after examples. Use whenever the user is writing, reviewing or fixing UI motion (CSS transitions, Framer Motion / Motion, React, SwiftUI, dropdowns, popovers, modals, buttons, toggles, tabs, lists, drag interactions), or says an animation feels off, janky, slow, floaty, cheap, robotic or "not smooth", even if they never say "animation guidelines".
 ---
 
 # UI Animation Polish
@@ -14,20 +14,43 @@ Four principles sit underneath all of them. When a situation isn't covered by a 
 3. **Stay physically believable.** Objects accelerate and decelerate, travel in arcs, resist at limits, and keep their mass.
 4. **Never leave an empty or ambiguous frame.** One state should hand off to the next without a gap, a pop or a muddy overlap.
 
+**Scope:** interactive UI motion on the web and native apps. Not logo stings, video editing, 3D scenes, or writing about animation.
+
+## Bundled resources
+
+Load only what the task needs; the rules below are enough for most fixes.
+
+| Path | Open when |
+| --- | --- |
+| `references/easing-and-duration.md` | Choosing a curve, a duration, a spring, or choreographing several elements |
+| `references/component-recipes.md` | Building a specific component (modal, toast, tabs, switch, drag, carousel, …) |
+| `references/platforms.md` | The stack is Vue, Svelte, SwiftUI, React Native, Flutter, GSAP, WAAPI, Tailwind, or View Transitions |
+| `references/accessibility-and-performance.md` | Reduced motion, vestibular safety, jank, FLIP, blur cost, frame budgets |
+| `references/review-and-audit.md` | Auditing a codebase, scoring, or writing the report |
+| `references/anti-patterns.md` | A motion smell needs a name and an exact replacement |
+| `references/sources.md` | Verifying where a default comes from |
+| `scripts/audit-motion.mjs` | You can run commands and the task is a review: `node scripts/audit-motion.mjs <path>` |
+| `assets/motion-tokens.css` | Writing CSS and needs the tokens |
+| `assets/motion-presets.ts` | Writing React + Motion and wants typed presets |
+| `examples/before-after.html` | The user wants to see or feel the difference |
+| `examples/react/` | Copy-ready React components for popover, stagger, press, icon swap, toggle, card→detail |
+
 ## How to use this skill
 
 **Writing new motion**
 
 1. Identify the element type (dropdown, button, list, toggle, drag handle, tab, icon swap, card expansion, success state).
 2. Look it up in the Quick reference, then read the matching rules below.
-3. Use the defaults given; put durations and easings in shared tokens (see Implementation notes).
+3. For a specific component or unfamiliar stack, open the matching reference from the table above.
+4. Use the defaults given; put durations and easings in shared tokens (see Implementation notes) or start from `assets/`.
 
 **Reviewing or fixing existing motion**
 
 1. Read the code and note every `transition`, `animate`, `@keyframes`, spring config, and drag handler.
-2. Compare each against the "Before" smell of each rule. Use the Review checklist at the end.
-3. Fix the violations. Report each as `rule N: old value → new value, because <one-line reason>` so the user learns why, and can push back.
-4. Don't rewrite motion that already follows the rules just to make it match your taste.
+2. If you can run commands, run `node scripts/audit-motion.mjs <path>` and use its rule-numbered findings as a floor. It cannot judge origin, exit direction, drag feel, or intent.
+3. Compare each against the "Before" smell of each rule. Use the Review checklist at the end and `references/review-and-audit.md`.
+4. Fix the violations. Report each as `rule N: old value → new value, because <one-line reason>` so the user learns why, and can push back.
+5. Don't rewrite motion that already follows the rules just to make it match your taste.
 
 **When to deviate.** The numbers are strong defaults, not laws. Full-screen or page-level transitions can run 300–500ms; playful or onboarding moments can bounce; a large panel needs longer than a tiny tooltip. Say so when you deviate and why. If the project has an existing motion design system, follow it and note any differences.
 
@@ -361,7 +384,7 @@ Work through this when auditing existing motion. Flag each hit with its rule num
 ## Implementation notes
 
 - **Performance:** animate `transform` and `opacity` (compositor friendly). Avoid animating `width`, `height`, `top`, `left`, `margin`. Use blur sparingly and check on low-end devices.
-- **Reduced motion:** respect `prefers-reduced-motion`. Keep opacity changes; drop travel, scale, stagger, arcs, stretch and pulse. In Motion use `useReducedMotion()`.
+- **Reduced motion:** respect `prefers-reduced-motion`. Keep opacity changes; drop travel, scale, stagger, arcs, stretch and pulse. In Motion use `useReducedMotion()` or `<MotionConfig reducedMotion="user">`. Reduced motion is not the same as no feedback; see `references/accessibility-and-performance.md`.
 
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -372,13 +395,14 @@ Work through this when auditing existing motion. Flag each hit with its rule num
 }
 ```
 
-- **Tokens:** define shared values so the product stays consistent:
+- **Tokens:** define shared values so the product stays consistent. Ready-made: `assets/motion-tokens.css` (CSS) and `assets/motion-presets.ts` (typed Motion presets).
 
 ```css
 :root {
   --dur-fast: 150ms;
   --dur-base: 200ms;
   --dur-slow: 300ms;
+  --dur-exit: 160ms;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
@@ -388,3 +412,16 @@ Work through this when auditing existing motion. Flag each hit with its rule num
 - **Don't over-apply:** not every element needs motion. Animate to explain cause and effect, confirm actions, and preserve continuity, not to decorate.
 - **Existing systems:** when a rule conflicts with a project's motion tokens or platform conventions (SwiftUI, Material), follow the system and mention the difference.
 - **Reporting:** when you change motion, summarise as a short list of `rule N: before → after`, and offer to show the alternative if the user prefers a different feel.
+- **Tooling:** `scripts/audit-motion.mjs` scans CSS/JSX/TSX/Vue/Svelte/HTML for the mechanical violations; `examples/` shows the numbers running. Neither replaces reading the interaction.
+
+## Reference map
+
+| Need | File |
+| --- | --- |
+| Curve, duration, spring, choreography | `references/easing-and-duration.md` |
+| Component-by-component code | `references/component-recipes.md` |
+| CSS, Tailwind, React, Vue, Svelte, SwiftUI, RN, Flutter, GSAP | `references/platforms.md` |
+| Reduced motion, vestibular safety, jank, FLIP | `references/accessibility-and-performance.md` |
+| Audit workflow, scoring rubric, report template | `references/review-and-audit.md` |
+| Smell → exact fix | `references/anti-patterns.md` |
+| Citations | `references/sources.md` |

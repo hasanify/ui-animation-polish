@@ -1,0 +1,181 @@
+{
+  "version": 1,
+  "skill": "ui-animation-polish",
+  "how_to_run": "See README.md. Judge each case with an LLM or a human against expect/reject; strings are concepts, not literal matches.",
+  "cases": [
+    {
+      "id": "dropdown-cheap",
+      "should_trigger": true,
+      "prompt": "My dropdown menu feels cheap when it opens. Here's the CSS: opacity 0 to 1 and scale(0) to 1 over 600ms ease-in, transform-origin center.",
+      "expect": [
+        { "rule": "2", "contains": "150-250ms duration" },
+        { "rule": "10", "contains": "start at scale(0.95), not 0" },
+        { "rule": "11", "contains": "origin points at the trigger" },
+        { "rule": "1", "contains": "ease-out for the entrance" },
+        { "rule": "15", "contains": "exit shorter than the entrance" }
+      ],
+      "reject": [
+        "keeps scale(0)",
+        "keeps 600ms",
+        "keeps ease-in on the entrance",
+        "keeps a centre origin"
+      ],
+      "notes": "The canonical four-part fix. A good answer rewrites the CSS, not just names the rules."
+    },
+    {
+      "id": "audit-existing",
+      "should_trigger": true,
+      "prompt": "Review the motion in src/components. I want to know what feels off and the exact changes to make.",
+      "expect": [
+        "reads the transition/animate/spring/drag code before advising",
+        "reports findings as rule N: before -> after with a reason",
+        "checks reduced-motion support",
+        "does not rewrite motion that already follows the rules"
+      ],
+      "reject": [
+        "gives generic advice without reading the code",
+        "rewrites everything to a single duration",
+        "invents files or values"
+      ],
+      "notes": "Tool use is a bonus: scripts/audit-motion.mjs catches the mechanical violations."
+    },
+    {
+      "id": "success-confirmation",
+      "should_trigger": true,
+      "prompt": "When the user saves, the button label changes from Save to Saved. Make the confirmation feel more noticeable without a toast.",
+      "expect": [
+        { "rule": "8", "contains": "one pulse in addition to the label change" },
+        { "rule": "8", "contains": "peak around 1.04-1.08 and under 400ms" },
+        { "rule": "8", "contains": "no looping animation" },
+        "keeps the label change for accessibility"
+      ],
+      "reject": ["adds an infinite pulse", "adds confetti", "replaces the label with motion only"],
+      "notes": "Tests restraint: confirmation, not celebration."
+    },
+    {
+      "id": "toggle-physical",
+      "should_trigger": true,
+      "prompt": "The switch knob slides rigidly across the track and feels like a sticker. Make it feel physical.",
+      "expect": [
+        { "rule": "5", "contains": "about 12% stretch along travel with area preserved" },
+        { "rule": "5", "contains": "stretch is transient" },
+        { "rule": "9", "contains": "ease-in-out for the move" },
+        { "rule": "13", "contains": "no overshoot" }
+      ],
+      "reject": ["adds bounce", "stretch above 15%", "leaves the stretch on at rest"],
+      "notes": "A good answer gives scaleX 1.12 / scaleY 0.89 and a code sample."
+    },
+    {
+      "id": "card-detail",
+      "should_trigger": true,
+      "prompt": "Clicking a card opens a detail view. Right now the card disappears and the detail page appears on a new route. How should this animate?",
+      "expect": [
+        { "rule": "20", "contains": "shared layoutId / matched geometry" },
+        { "rule": "16", "contains": "overlapping states, no blank gap" },
+        { "rule": "15", "contains": "return trip exits toward the card" }
+      ],
+      "reject": ["crossfades two unrelated views", "leaves a blank frame", "animates width and height directly"],
+      "notes": "May mention FLIP or View Transitions as alternatives."
+    },
+    {
+      "id": "icon-morph",
+      "should_trigger": true,
+      "prompt": "The copy icon becomes a check instantly. Make it feel smooth.",
+      "expect": [
+        { "rule": "18", "contains": "scale + opacity + small blur" },
+        { "rule": "16", "contains": "outgoing and incoming overlap" },
+        { "rule": "18", "contains": "blur around 4-6px, not large" }
+      ],
+      "reject": ["hard swap", "opacity-only crossfade", "blur above 10px"],
+      "notes": "Should include popLayout or absolute stacking to avoid layout shift."
+    },
+    {
+      "id": "drag-lag",
+      "should_trigger": true,
+      "prompt": "Dragging our sheet feels laggy. There's a CSS transition on transform and the sheet stops dead at the edge.",
+      "expect": [
+        { "rule": "14", "contains": "1:1 pointer tracking while held; no transition" },
+        { "rule": "19", "contains": "rubber band past the limit" },
+        { "rule": "14", "contains": "spring/ease only after release" }
+      ],
+      "reject": ["keeps the transition during drag", "adds smoothing to pointer input", "hard stop at the edge"],
+      "notes": "May reference dragElastic or the rubberBand formula."
+    },
+    {
+      "id": "tab-flicker",
+      "should_trigger": true,
+      "prompt": "Switching tabs flickers: the old content fades out, there's a beat of empty space, then the new content fades in. It also looks muddy halfway through.",
+      "expect": [
+        { "rule": "16", "contains": "overlap enter and exit" },
+        { "rule": "17", "contains": "mask or clip instead of crossfading text" },
+        "identifies mode=wait or sequential fades as the cause"
+      ],
+      "reject": ["shortens both fades without overlapping", "keeps the blank beat", "crossfades the text"],
+      "notes": "The two symptoms have two different fixes; a strong answer names both."
+    },
+    {
+      "id": "list-cascade",
+      "should_trigger": true,
+      "prompt": "Animate the search results in with a cascade. There are 30 rows.",
+      "expect": [
+        { "rule": "3", "contains": "about 30ms per row" },
+        { "rule": "3", "contains": "cap the staggered rows at about 8-10" },
+        { "rule": "3", "contains": "total stagger under about 300ms" },
+        { "rule": "1", "contains": "ease-out" }
+      ],
+      "reject": ["staggers all 30 rows", "100ms or more per row", "re-staggers on every keystroke"],
+      "notes": "The cap is the differentiator; a naive answer staggers everything."
+    },
+    {
+      "id": "modal-motion",
+      "should_trigger": true,
+      "prompt": "Give me the motion spec for a settings modal: backdrop, panel, open and close.",
+      "expect": [
+        { "rule": "2", "contains": "panel about 200-300ms" },
+        { "rule": "10", "contains": "scale 0.95-0.98 plus opacity" },
+        { "rule": "16", "contains": "backdrop and panel animate together, no blank frame" },
+        { "rule": "15", "contains": "close about 20% faster" },
+        { "rule": "13", "contains": "no bounce" }
+      ],
+      "reject": ["scale(0)", "600ms", "bounce", "backdrop fades out before the panel"],
+      "notes": "May include focus management and reduced motion."
+    },
+    {
+      "id": "reduced-motion",
+      "should_trigger": true,
+      "prompt": "Our marketing site has parallax, a spinning hero badge and auto-playing cards. Is that okay for accessibility?",
+      "expect": [
+        "flags vestibular risk from parallax, spin and autoplay",
+        "requires prefers-reduced-motion support and a pause for autoplay",
+        "keeps opacity/colour feedback in the reduced-motion branch",
+        "cites WCAG 2.3.3 or 2.2.2"
+      ],
+      "reject": ["says motion is purely aesthetic and safe", "removes all feedback under reduced motion", "ignores autoplay"],
+      "notes": "Should recommend a per-effect branch, not only a global 1ms reset."
+    },
+    {
+      "id": "negative-database",
+      "should_trigger": false,
+      "prompt": "Add an index on users.email and write the migration.",
+      "expect": ["answers the database task without loading motion guidance"],
+      "reject": ["talks about easing", "loads SKILL.md", "mentions reduced motion"],
+      "notes": "Out of scope."
+    },
+    {
+      "id": "negative-copy",
+      "should_trigger": false,
+      "prompt": "Write a 600-word blog post about the history of animation.",
+      "expect": ["writes the post without applying UI motion rules"],
+      "reject": ["turns the post into a UI motion checklist", "loads the auditor"],
+      "notes": "Writing about animation is not UI motion implementation."
+    },
+    {
+      "id": "negative-color",
+      "should_trigger": false,
+      "prompt": "This text fails contrast on the grey background. Fix the colours.",
+      "expect": ["fixes contrast only"],
+      "reject": ["changes durations or easing", "adds motion"],
+      "notes": "Colour-only task."
+    }
+  ]
+}

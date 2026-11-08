@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/hasanify/ui-animation-polish/compare/v1.1.0...v1.2.0) (2026-11-08)
+
+
+### Features
+
+* **release:** deploy v1.2.0 with full MCP server support and entrypoints ([22cda1e](https://github.com/hasanify/ui-animation-polish/commit/22cda1ee1add426cf74fe30649cd09750e060394))
+
 # [1.1.0](https://github.com/hasanify/ui-animation-polish/compare/v1.0.0...v1.1.0) (2026-11-08)
 
 

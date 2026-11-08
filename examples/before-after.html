@@ -5,10 +5,28 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UI Animation Polish — The 20 Core Motion Rules</title>
+<meta name="description" content="Interactive side-by-side comparison of 20 UI animation rules. Compare bad vs good durations, easings, popovers, staggers, and spring physics in real time.">
+<meta name="keywords" content="UI animation, micro-interactions, framer motion, css easing, duration tokens, web animation rules, before and after animation">
+<meta name="author" content="Hasan">
 <link rel="icon" href="https://avatars.githubusercontent.com/hasanify?s=64">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://hasanify.github.io/ui-animation-polish/examples/before-after.html">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hasanify.github.io/ui-animation-polish/examples/before-after.html">
+<meta property="og:title" content="UI Animation Polish — 20 Rules in Action (Live Demo)">
+<meta property="og:description" content="Stop guessing easing curves and durations. Test before & after side-by-side interactions for popovers, buttons, lists, and modals.">
+<meta property="og:image" content="https://raw.githubusercontent.com/hasanify/ui-animation-polish/main/assets/social-preview.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://hasanify.github.io/ui-animation-polish/examples/before-after.html">
+<meta name="twitter:title" content="UI Animation Polish — The 20 Rules in Action">
+<meta name="twitter:description" content="Interactive before/after playground for UI motion that feels designed instead of default.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hasanify/ui-animation-polish/main/assets/social-preview.png">
 <style>
   /* Design Tokens & Theme Variables */
   :root {
@@ -2331,7 +2349,9 @@
   });
 
   // Init theme
-  const savedTheme = localStorage.getItem("ui_anim_theme") || "dark";
+  const urlParams = new URLSearchParams(window.location.search);
+  const themeParam = urlParams.get("theme");
+  const savedTheme = themeParam || localStorage.getItem("ui_anim_theme") || "dark";
   setTheme(savedTheme);
 
   /* ------------------------------------------------------------- */

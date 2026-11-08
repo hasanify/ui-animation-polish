@@ -6,6 +6,31 @@
 <title>UI Animation Polish — The 20 Rules in Action</title>
 <style>
   :root {
+    --bg: #0d0e12;
+    --card: #141720;
+    --card-subtle: #171b26;
+    --ink: #ffffff;
+    --muted: #8e97a8;
+    --line: #1e222b;
+    --bad: #e25845;
+    --bad-bg: #1c1214;
+    --bad-line: #3d1b1e;
+    --good: #34b380;
+    --good-bg: #0f1e17;
+    --good-line: #1e4231;
+    --accent: #34b380;
+    --radius: 12px;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --speed: 1;
+    --dur-fast: calc(150ms * var(--speed));
+    --dur-base: calc(200ms * var(--speed));
+    --dur-exit: calc(160ms * var(--speed));
+    --dur-move: calc(250ms * var(--speed));
+    --dur-pulse: calc(300ms * var(--speed));
+  }
+
+  [data-theme="light"] {
     --bg: #f5f4f0;
     --card: #ffffff;
     --card-subtle: #f9f8f5;
@@ -19,31 +44,6 @@
     --good-bg: #f3f8f5;
     --good-line: #c5dfd3;
     --accent: #245744;
-    --radius: 14px;
-    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-    --speed: 1;
-    --dur-fast: calc(150ms * var(--speed));
-    --dur-base: calc(200ms * var(--speed));
-    --dur-exit: calc(160ms * var(--speed));
-    --dur-move: calc(250ms * var(--speed));
-    --dur-pulse: calc(300ms * var(--speed));
-  }
-
-  [data-theme="dark"] {
-    --bg: #0f1013;
-    --card: #17191e;
-    --card-subtle: #1d2027;
-    --ink: #f0f2f5;
-    --muted: #8e95a2;
-    --line: #292d36;
-    --bad: #e25845;
-    --bad-bg: #221516;
-    --bad-line: #482320;
-    --good: #38b780;
-    --good-bg: #10241b;
-    --good-line: #1c4b37;
-    --accent: #38b780;
   }
 
   * { box-sizing: border-box; }
@@ -60,13 +60,31 @@
   }
 
   header, main, footer, .matrix-container { max-width: 1160px; margin-inline: auto; }
+  .banner-arcs {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 480px;
+    height: 480px;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .banner-arcs svg {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+  }
+  header { position: relative; }
+  .header-content { position: relative; z-index: 10; }
+
 
   .eyebrow {
-    margin: 0 0 10px;
-    color: var(--muted);
+    margin: 0 0 12px;
+    color: var(--accent);
     font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-weight: 650;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
   }
 
@@ -144,9 +162,10 @@
   }
 
   .chip.active {
-    background: var(--ink);
-    color: var(--card);
-    border-color: var(--ink);
+    background: var(--accent);
+    color: #0d0e12;
+    border-color: var(--accent);
+    font-weight: 600;
   }
 
   .btn-action {
@@ -335,23 +354,27 @@
   }
 
   .stage[data-variant="bad"] .label {
-    background: #fae6e3;
+    background: #2a1417;
     color: var(--bad);
+    border: 1px solid #4a1f24;
   }
 
   .stage[data-variant="good"] .label {
+    background: #11281e;
+    color: var(--good);
+    border: 1px solid #1e4d38;
+  }
+
+  [data-theme="light"] .stage[data-variant="bad"] .label {
+    background: #fae6e3;
+    color: var(--bad);
+    border: 1px solid #f1cfc8;
+  }
+
+  [data-theme="light"] .stage[data-variant="good"] .label {
     background: #d8eee2;
     color: var(--good);
-  }
-
-  [data-theme="dark"] .stage[data-variant="bad"] .label {
-    background: #3e1b19;
-    color: var(--bad);
-  }
-
-  [data-theme="dark"] .stage[data-variant="good"] .label {
-    background: #173829;
-    color: var(--good);
+    border: 1px solid #c5dfd3;
   }
 
   button {
@@ -1091,6 +1114,18 @@
 <body>
 
 <header>
+  <div class="banner-arcs" aria-hidden="true">
+    <svg viewBox="0 0 560 560" width="560" height="560">
+      <ellipse cx="560" cy="0" rx="560" ry="560" fill="#0f1e17" />
+      <ellipse cx="560" cy="0" rx="480" ry="480" fill="#13281e" />
+      <ellipse cx="560" cy="0" rx="400" ry="400" fill="#183427" />
+      <ellipse cx="560" cy="0" rx="320" ry="320" fill="#1e4231" />
+      <ellipse cx="560" cy="0" rx="250" ry="250" fill="#25523d" />
+      <ellipse cx="560" cy="0" rx="180" ry="180" fill="#2d634a" />
+      <ellipse cx="560" cy="0" rx="120" ry="120" fill="#367658" />
+      <ellipse cx="560" cy="0" rx="70" ry="70" fill="#408b68" />
+    </svg>
+  </div>
   <div class="header-content">
     <div>
       <p class="eyebrow">ui-animation-polish · interactive reference</p>
@@ -1100,7 +1135,7 @@
       </p>
     </div>
     <div style="display:flex; gap:8px;">
-      <button class="btn-action" id="theme-btn" aria-label="Toggle dark mode">☾ Theme</button>
+      <button class="btn-action" id="theme-btn" aria-label="Toggle theme">☼ Light Mode</button>
       <button class="btn-action" id="matrix-btn">☰ All 20 Rules Matrix</button>
     </div>
   </div>
@@ -1887,13 +1922,13 @@ animation: arc-motion 300ms cubic-bezier(0.77, 0, 0.175, 1) forwards;</span>
   // Theme toggle
   const themeBtn = document.getElementById("theme-btn");
   themeBtn.addEventListener("click", () => {
-    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    if (isDark) {
+    const isLight = document.documentElement.getAttribute("data-theme") === "light";
+    if (isLight) {
       document.documentElement.removeAttribute("data-theme");
-      themeBtn.textContent = "☾ Theme";
+      themeBtn.textContent = "☼ Light Mode";
     } else {
-      document.documentElement.setAttribute("data-theme", "dark");
-      themeBtn.textContent = "☼ Light";
+      document.documentElement.setAttribute("data-theme", "light");
+      themeBtn.textContent = "☾ Obsidian Theme";
     }
   });
 

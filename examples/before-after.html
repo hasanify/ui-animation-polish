@@ -15,18 +15,17 @@
     --ink: #f1f5f9;
     --muted: #94a3b8;
     --line: #1e2433;
-    --line-subtle: #161b26;
     --bad: #f87171;
-    --bad-bg: #191013;
+    --bad-bg: #181114;
     --bad-border: #3b171c;
     --bad-pill: #2a1215;
     --good: #34d399;
-    --good-bg: #0c1a15;
+    --good-bg: #0c1c16;
     --good-border: #14402d;
     --good-pill: #0e271e;
     --accent: #10b981;
     --accent-hover: #059669;
-    --accent-ink: #031e13;
+    --accent-ink: #041f14;
     --radius: 12px;
     --radius-sm: 6px;
     --speed: 1;
@@ -42,7 +41,6 @@
     --ink: #0f172a;
     --muted: #475569;
     --line: #e2e8f0;
-    --line-subtle: #edf2f7;
     --bad: #dc2626;
     --bad-bg: #fef2f2;
     --bad-border: #fecaca;
@@ -75,9 +73,7 @@
   }
 
   /* Header */
-  header {
-    margin-bottom: 28px;
-  }
+  header { margin-bottom: 28px; }
 
   .header-top {
     display: flex;
@@ -260,9 +256,7 @@
     overflow-x: auto;
   }
 
-  .matrix-drawer.open {
-    display: block;
-  }
+  .matrix-drawer.open { display: block; }
 
   .matrix-table {
     width: 100%;
@@ -287,11 +281,9 @@
     vertical-align: middle;
   }
 
-  .matrix-table tr:last-child td {
-    border-bottom: none;
-  }
+  .matrix-table tr:last-child td { border-bottom: none; }
 
-  /* Pills - Pixel Perfect Alignment */
+  /* Pills */
   .pill {
     display: inline-flex;
     align-items: center;
@@ -316,7 +308,7 @@
     gap: 24px;
   }
 
-  /* Demo Card - Safe Stacking Context */
+  /* Demo Card */
   .demo-card {
     position: relative;
     z-index: 1;
@@ -336,9 +328,7 @@
     z-index: 10;
   }
 
-  .demo-card.hidden {
-    display: none;
-  }
+  .demo-card.hidden { display: none; }
 
   .card-top {
     display: flex;
@@ -381,7 +371,7 @@
     line-height: 1.45;
   }
 
-  /* Comparison Area - Overflow Visible to Prevent Menu Clipping */
+  /* Comparison Area */
   .comparison-stage {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -397,14 +387,14 @@
   .stage-box {
     position: relative;
     z-index: 2;
-    min-height: 200px;
+    min-height: 210px;
     border-radius: 8px;
     padding: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: visible; /* Prevents dropdown and popover clipping */
+    overflow: visible;
     cursor: pointer;
     user-select: none;
     transition: border-color 150ms var(--ease-out), background-color 150ms var(--ease-out);
@@ -420,13 +410,8 @@
     border: 1px solid var(--good-border);
   }
 
-  .stage-box:hover {
-    z-index: 15;
-  }
-
-  .stage-box.is-active {
-    z-index: 25;
-  }
+  .stage-box:hover { z-index: 15; }
+  .stage-box.is-active { z-index: 25; }
 
   .stage-tag {
     position: absolute;
@@ -474,9 +459,7 @@
     user-select: none;
   }
 
-  details.code-details summary:hover {
-    color: var(--ink);
-  }
+  details.code-details summary:hover { color: var(--ink); }
 
   .code-grid {
     display: grid;
@@ -508,7 +491,7 @@
   }
 
   /* ========================================================= */
-  /* RULE 1 & 2: DROPDOWNS (EASING & DURATION)                 */
+  /* RULE 1 & 2: DROPDOWNS                                     */
   /* ========================================================= */
   .menu-anchor {
     position: relative;
@@ -516,13 +499,13 @@
   }
 
   .btn-menu-trigger {
-    height: 34px;
-    padding: 0 14px;
+    height: 36px;
+    padding: 0 16px;
     background: var(--ink);
     color: var(--bg);
     border: none;
     border-radius: 6px;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 650;
     cursor: pointer;
     display: inline-flex;
@@ -532,20 +515,18 @@
     transition: transform 100ms var(--ease-out);
   }
 
-  .btn-menu-trigger:active {
-    transform: scale(0.97);
-  }
+  .btn-menu-trigger:active { transform: scale(0.97); }
 
   .menu-list {
     position: absolute;
     top: calc(100% + 8px);
     left: 50%;
-    width: 154px;
+    width: 156px;
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 8px;
-    padding: 5px;
-    box-shadow: 0 12px 28px -4px rgba(0,0,0,0.45);
+    padding: 6px;
+    box-shadow: 0 14px 32px -4px rgba(0,0,0,0.5);
     z-index: 30;
     opacity: 0;
     pointer-events: none;
@@ -564,33 +545,30 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: background-color 100ms var(--ease-out);
   }
 
-  .menu-item:hover {
-    background: var(--card-subtle);
-  }
+  .menu-item:hover { background: var(--card-subtle); }
 
-  /* Rule 1: Ease-in vs Ease-out */
+  /* Rule 1: 24px drop distance to clearly see ease-in sluggishness vs ease-out launch */
   .menu-r1-bad {
-    transform: translate(-50%, -6px);
-    transition: opacity calc(250ms * var(--speed)) ease-in, transform calc(250ms * var(--speed)) ease-in;
+    transform: translate(-50%, -24px);
+    transition: opacity calc(260ms * var(--speed)) ease-in, transform calc(260ms * var(--speed)) ease-in;
   }
   .menu-r1-bad.open {
     transform: translate(-50%, 0);
   }
 
   .menu-r1-good {
-    transform: translate(-50%, -6px);
+    transform: translate(-50%, -24px);
     transition: opacity calc(200ms * var(--speed)) var(--ease-out), transform calc(200ms * var(--speed)) var(--ease-out);
   }
   .menu-r1-good.open {
     transform: translate(-50%, 0);
   }
 
-  /* Rule 2: 600ms vs 200ms */
+  /* Rule 2: 600ms vs 200ms duration */
   .menu-r2-bad {
-    transform: translate(-50%, -6px);
+    transform: translate(-50%, -16px);
     transition: opacity calc(600ms * var(--speed)) var(--ease-out), transform calc(600ms * var(--speed)) var(--ease-out);
   }
   .menu-r2-bad.open {
@@ -598,7 +576,7 @@
   }
 
   .menu-r2-good {
-    transform: translate(-50%, -6px);
+    transform: translate(-50%, -16px);
     transition: opacity calc(200ms * var(--speed)) var(--ease-out), transform calc(200ms * var(--speed)) var(--ease-out);
   }
   .menu-r2-good.open {
@@ -609,7 +587,7 @@
   /* RULE 3: STAGGER ROWS (180ms vs 30ms)                      */
   /* ========================================================= */
   .stagger-box {
-    width: 180px;
+    width: 190px;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -631,39 +609,31 @@
   }
 
   @keyframes rowCascade {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Rule 3 Bad: 180ms staggers */
   .stagger-bad.replaying .stagger-row:nth-child(1) { animation: rowCascade calc(180ms * var(--speed)) var(--ease-out) 0ms both; }
   .stagger-bad.replaying .stagger-row:nth-child(2) { animation: rowCascade calc(180ms * var(--speed)) var(--ease-out) calc(180ms * var(--speed)) both; }
   .stagger-bad.replaying .stagger-row:nth-child(3) { animation: rowCascade calc(180ms * var(--speed)) var(--ease-out) calc(360ms * var(--speed)) both; }
   .stagger-bad.replaying .stagger-row:nth-child(4) { animation: rowCascade calc(180ms * var(--speed)) var(--ease-out) calc(540ms * var(--speed)) both; }
 
-  /* Rule 3 Good: 30ms staggers */
   .stagger-good.replaying .stagger-row:nth-child(1) { animation: rowCascade calc(180ms * var(--speed)) var(--ease-out) 0ms both; }
   .stagger-good.replaying .stagger-row:nth-child(2) { animation: rowCascade calc(180ms * var(--speed)) var(--ease-out) calc(30ms * var(--speed)) both; }
   .stagger-good.replaying .stagger-row:nth-child(3) { animation: rowCascade calc(180ms * var(--speed)) var(--ease-out) calc(60ms * var(--speed)) both; }
   .stagger-good.replaying .stagger-row:nth-child(4) { animation: rowCascade calc(180ms * var(--speed)) var(--ease-out) calc(90ms * var(--speed)) both; }
 
   /* ========================================================= */
-  /* RULE 4: BUTTON PRESS FEEDBACK (scale 0.97)                */
+  /* RULE 4: BUTTON PRESS FEEDBACK                             */
   /* ========================================================= */
   .press-target {
-    height: 40px;
-    padding: 0 18px;
+    height: 42px;
+    padding: 0 20px;
     background: var(--ink);
     color: var(--bg);
     border: none;
     border-radius: 8px;
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     font-weight: 650;
     cursor: pointer;
     line-height: 1;
@@ -672,25 +642,31 @@
     gap: 8px;
   }
 
+  .press-bad {
+    /* No active scale or feedback */
+  }
+
   .press-good {
-    transition: transform calc(120ms * var(--speed)) var(--ease-out);
+    transition: transform calc(120ms * var(--speed)) var(--ease-out), box-shadow calc(120ms * var(--speed)) var(--ease-out);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   }
 
   .press-good.pressed,
   .press-good:active {
-    transform: scale(0.97);
+    transform: scale(0.93) translateY(2px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
   }
 
   /* ========================================================= */
   /* RULE 5: KNOB STRETCH BY 12%                               */
   /* ========================================================= */
   .switch-track {
-    width: 56px;
-    height: 30px;
+    width: 60px;
+    height: 32px;
     background: var(--card-subtle);
     border: 1px solid var(--line);
     border-radius: 999px;
-    padding: 3px;
+    padding: 4px;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -708,39 +684,50 @@
     height: 22px;
     border-radius: 999px;
     background: #ffffff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
     transform-origin: 50% 50%;
   }
 
-  /* Rule 5 Bad: rigid circle slide */
+  /* Rule 5 Bad: rigid circle slides across */
   .knob-bad {
     transition: transform calc(220ms * var(--speed)) var(--ease-out);
     transform: translateX(0);
   }
   .switch-track.on .knob-bad {
-    transform: translateX(26px);
+    transform: translateX(28px);
   }
 
-  /* Rule 5 Good: stretches by 12% while in motion */
-  .knob-good {
-    transition: transform calc(220ms * var(--speed)) var(--ease-out);
-    transform: translateX(0) scale(1, 1);
+  /* Rule 5 Good: stretches by 18% during transit */
+  @keyframes knobStretchOn {
+    0% { transform: translateX(0) scale(1, 1); }
+    45% { transform: translateX(14px) scale(1.22, 0.84); }
+    100% { transform: translateX(28px) scale(1, 1); }
   }
-  .knob-good.stretching-right {
-    transform: translateX(13px) scale(1.12, 0.89);
+
+  @keyframes knobStretchOff {
+    0% { transform: translateX(28px) scale(1, 1); }
+    45% { transform: translateX(14px) scale(1.22, 0.84); }
+    100% { transform: translateX(0) scale(1, 1); }
+  }
+
+  .knob-good {
+    transform: translateX(0);
   }
   .switch-track.on .knob-good {
-    transform: translateX(26px) scale(1, 1);
+    transform: translateX(28px);
   }
-  .knob-good.stretching-left {
-    transform: translateX(13px) scale(1.12, 0.89);
+  .knob-good.anim-on {
+    animation: knobStretchOn calc(240ms * var(--speed)) var(--ease-out) forwards;
+  }
+  .knob-good.anim-off {
+    animation: knobStretchOff calc(240ms * var(--speed)) var(--ease-out) forwards;
   }
 
   /* ========================================================= */
-  /* RULE 6: STAGGER SECONDARY DETAILS (~50ms)                 */
+  /* RULE 6: STAGGER SECONDARY DETAILS                         */
   /* ========================================================= */
   .card-widget {
-    width: 190px;
+    width: 200px;
     padding: 12px 14px;
     background: var(--card);
     border: 1px solid var(--line);
@@ -751,17 +738,17 @@
   }
 
   @keyframes cardSlideIn {
-    from { opacity: 0; transform: translateY(12px); }
+    from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes badgePopIn {
-    from { opacity: 0; transform: scale(0.85); }
+    from { opacity: 0; transform: scale(0.65); }
     to { opacity: 1; transform: scale(1); }
   }
 
   .card-widget.replaying {
-    animation: cardSlideIn calc(200ms * var(--speed)) var(--ease-out) both;
+    animation: cardSlideIn calc(220ms * var(--speed)) var(--ease-out) both;
   }
 
   .card-widget-top {
@@ -806,18 +793,14 @@
     color: var(--muted);
   }
 
-  /* Rule 6 Bad: everything at once */
-  .card-badge-bad {
-    opacity: 1;
-  }
+  .card-badge-bad { opacity: 1; }
 
-  /* Rule 6 Good: badge trails by 50ms */
   .card-badge-good {
     opacity: 1;
     transform: scale(1);
   }
   .card-widget.replaying .card-badge-good {
-    animation: badgePopIn calc(180ms * var(--speed)) var(--ease-out) calc(50ms * var(--speed)) both;
+    animation: badgePopIn calc(180ms * var(--speed)) var(--ease-out) calc(60ms * var(--speed)) both;
   }
 
   /* ========================================================= */
@@ -825,16 +808,16 @@
   /* ========================================================= */
   .arc-stage {
     position: relative;
-    width: 200px;
-    height: 110px;
+    width: 210px;
+    height: 120px;
   }
 
   .arc-puck {
     position: absolute;
     bottom: 12px;
     left: 12px;
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 8px;
@@ -844,42 +827,42 @@
     font-size: 0.74rem;
     font-weight: 700;
     color: var(--ink);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.3);
   }
 
   /* Rule 7 Bad: linear diagonal translation */
   .arc-puck-bad {
-    transition: transform calc(260ms * var(--speed)) linear;
+    transition: transform calc(280ms * var(--speed)) linear;
   }
   .arc-puck-bad.moved {
-    transform: translate(120px, -45px);
+    transform: translate(130px, -50px);
   }
 
-  /* Rule 7 Good: natural curved arc */
+  /* Rule 7 Good: natural high curved arc */
   @keyframes moveParabolicArc {
     0% { transform: translate(0, 0); }
-    45% { transform: translate(60px, -65px); }
-    100% { transform: translate(120px, -45px); }
+    40% { transform: translate(65px, -80px); }
+    100% { transform: translate(130px, -50px); }
   }
   @keyframes returnParabolicArc {
-    0% { transform: translate(120px, -45px); }
-    45% { transform: translate(60px, -65px); }
+    0% { transform: translate(130px, -50px); }
+    40% { transform: translate(65px, -80px); }
     100% { transform: translate(0, 0); }
   }
 
   .arc-puck-good.moved {
-    animation: moveParabolicArc calc(260ms * var(--speed)) var(--ease-out) forwards;
+    animation: moveParabolicArc calc(280ms * var(--speed)) var(--ease-out) forwards;
   }
   .arc-puck-good.returned {
-    animation: returnParabolicArc calc(260ms * var(--speed)) var(--ease-out) forwards;
+    animation: returnParabolicArc calc(280ms * var(--speed)) var(--ease-out) forwards;
   }
 
   /* ========================================================= */
   /* RULE 8: PULSE TO CONFIRM SUCCESS                          */
   /* ========================================================= */
   .btn-save-confirm {
-    height: 38px;
-    padding: 0 18px;
+    height: 40px;
+    padding: 0 20px;
     background: var(--ink);
     color: var(--bg);
     border: none;
@@ -901,8 +884,8 @@
 
   @keyframes singleSuccessPulse {
     0% { transform: scale(1); }
-    40% { transform: scale(1.08); }
-    100% { transform: scale(1); }
+    35% { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.25); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
   }
 
   .pulse-good.saved {
@@ -913,8 +896,8 @@
   /* RULE 9: EASE-IN-OUT FOR ON-SCREEN MOVES                   */
   /* ========================================================= */
   .track-slide {
-    width: 190px;
-    height: 30px;
+    width: 210px;
+    height: 32px;
     background: var(--card-subtle);
     border: 1px solid var(--line);
     border-radius: 999px;
@@ -924,28 +907,26 @@
   }
 
   .slide-puck {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     background: var(--ink);
     border-radius: 999px;
   }
 
-  /* Rule 9 Bad: linear */
   .slide-puck-bad {
     transition: transform calc(300ms * var(--speed)) linear;
     transform: translateX(0);
   }
   .track-slide.moved .slide-puck-bad {
-    transform: translateX(160px);
+    transform: translateX(178px);
   }
 
-  /* Rule 9 Good: ease-in-out */
   .slide-puck-good {
     transition: transform calc(300ms * var(--speed)) var(--ease-in-out);
     transform: translateX(0);
   }
   .track-slide.moved .slide-puck-good {
-    transform: translateX(160px);
+    transform: translateX(178px);
   }
 
   /* ========================================================= */
@@ -956,12 +937,12 @@
     top: calc(100% + 8px);
     left: 50%;
     transform: translateX(-50%);
-    width: 154px;
+    width: 156px;
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 8px;
     padding: 10px;
-    box-shadow: 0 12px 28px -4px rgba(0,0,0,0.45);
+    box-shadow: 0 14px 32px -4px rgba(0,0,0,0.5);
     z-index: 30;
     opacity: 0;
     pointer-events: none;
@@ -972,7 +953,7 @@
     pointer-events: auto;
   }
 
-  /* Rule 10 Bad: scale(0) */
+  /* Rule 10 Bad: zooms from 0 dot */
   .pop-scale-bad {
     transform: translateX(-50%) scale(0);
     transition: opacity calc(200ms * var(--speed)) var(--ease-out), transform calc(200ms * var(--speed)) var(--ease-out);
@@ -981,7 +962,7 @@
     transform: translateX(-50%) scale(1);
   }
 
-  /* Rule 10 Good: scale(0.95) */
+  /* Rule 10 Good: enters from 0.95 */
   .pop-scale-good {
     transform: translateX(-50%) scale(0.95);
     transition: opacity calc(200ms * var(--speed)) var(--ease-out), transform calc(200ms * var(--speed)) var(--ease-out);
@@ -995,8 +976,8 @@
   /* ========================================================= */
   .anchor-corner {
     position: relative;
-    width: 180px;
-    height: 110px;
+    width: 190px;
+    height: 120px;
   }
 
   .anchor-btn {
@@ -1008,14 +989,14 @@
 
   .pop-corner {
     position: absolute;
-    top: 46px;
+    top: 48px;
     right: 6px;
-    width: 154px;
+    width: 160px;
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 8px;
     padding: 10px;
-    box-shadow: 0 12px 28px -4px rgba(0,0,0,0.45);
+    box-shadow: 0 14px 32px -4px rgba(0,0,0,0.5);
     z-index: 30;
     opacity: 0;
     pointer-events: none;
@@ -1029,17 +1010,17 @@
   /* Rule 11 Bad: center origin */
   .pop-origin-bad {
     transform-origin: 50% 50%;
-    transform: scale(0.85);
+    transform: scale(0.65);
     transition: opacity calc(200ms * var(--speed)) var(--ease-out), transform calc(200ms * var(--speed)) var(--ease-out);
   }
   .pop-origin-bad.open {
     transform: scale(1);
   }
 
-  /* Rule 11 Good: origin top right from trigger */
+  /* Rule 11 Good: expands from top right trigger */
   .pop-origin-good {
     transform-origin: top right;
-    transform: scale(0.92);
+    transform: scale(0.85);
     transition: opacity calc(200ms * var(--speed)) var(--ease-out), transform calc(200ms * var(--speed)) var(--ease-out);
   }
   .pop-origin-good.open {
@@ -1053,11 +1034,11 @@
     transform-origin: 50% 50%;
     transform: scale(1);
     opacity: 1;
-    transition: opacity calc(180ms * var(--speed)) ease-out, transform calc(180ms * var(--speed)) ease-out;
+    transition: opacity calc(200ms * var(--speed)) ease-out, transform calc(200ms * var(--speed)) ease-out;
   }
   .pop-exit-bad.closed {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.65);
   }
 
   .pop-exit-good {
@@ -1068,40 +1049,40 @@
   }
   .pop-exit-good.closed {
     opacity: 0;
-    transform: scale(0.92);
+    transform: scale(0.85);
   }
 
   /* ========================================================= */
-  /* RULE 13: AVOID BOUNCY SPRINGS FOR ROUTINE UI              */
+  /* RULE 13: AVOID BOUNCY SPRINGS                             */
   /* ========================================================= */
   .spring-dialog {
-    width: 170px;
+    width: 175px;
     padding: 14px;
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 8px;
-    box-shadow: 0 12px 28px -4px rgba(0,0,0,0.45);
+    box-shadow: 0 14px 32px -4px rgba(0,0,0,0.45);
     text-align: center;
     opacity: 1;
     transform: scale(1);
     z-index: 20;
   }
 
-  /* Rule 13 Bad: underdamped bouncy spring with overshoot */
+  /* Rule 13 Bad: 3 rubber-band wobbles */
   @keyframes bouncySpringOvershoot {
-    0% { transform: scale(0.7); opacity: 0; }
-    50% { transform: scale(1.14); opacity: 1; }
-    70% { transform: scale(0.93); }
-    85% { transform: scale(1.04); }
+    0% { transform: scale(0.6); opacity: 0; }
+    40% { transform: scale(1.18); opacity: 1; }
+    65% { transform: scale(0.88); }
+    85% { transform: scale(1.06); }
     100% { transform: scale(1); opacity: 1; }
   }
   .spring-bad.replaying {
     animation: bouncySpringOvershoot calc(550ms * var(--speed)) ease-out forwards;
   }
 
-  /* Rule 13 Good: critically damped settle, zero overshoot */
+  /* Rule 13 Good: critically damped settle, zero bounce */
   @keyframes cleanSettleCriticallyDamped {
-    0% { transform: scale(0.92); opacity: 0; }
+    0% { transform: scale(0.9); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
   }
   .spring-good.replaying {
@@ -1112,8 +1093,8 @@
   /* RULE 14: TRACK 1:1 DURING HANDHELD DRAG                   */
   /* ========================================================= */
   .drag-container {
-    width: 190px;
-    height: 74px;
+    width: 200px;
+    height: 76px;
     background: var(--card-subtle);
     border: 1px solid var(--line);
     border-radius: 8px;
@@ -1121,16 +1102,18 @@
     display: flex;
     align-items: center;
     padding: 0 10px;
+    touch-action: none;
   }
 
   .drag-card {
-    width: 52px;
-    height: 50px;
+    width: 56px;
+    height: 52px;
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: 0.74rem;
@@ -1139,18 +1122,17 @@
     user-select: none;
     position: absolute;
     left: 10px;
+    touch-action: none;
   }
 
-  .drag-card:active {
-    cursor: grabbing;
-  }
+  .drag-card:active { cursor: grabbing; }
 
-  /* Rule 14 Bad: 220ms tween lag during drag */
+  /* Rule 14 Bad: 220ms tween lag behind finger/cursor */
   .drag-bad {
     transition: transform calc(220ms * var(--speed)) ease-out;
   }
 
-  /* Rule 14 Good: 1:1 immediate tracking */
+  /* Rule 14 Good: 1:1 immediate tracking (no transition while held) */
   .drag-good {
     transition: none;
   }
@@ -1161,33 +1143,62 @@
   /* ========================================================= */
   /* RULE 15: MAKE EXITS ~20% FASTER THAN ENTRANCES            */
   /* ========================================================= */
-  .meter-box {
+  .dialog-15 {
+    width: 170px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.3);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    gap: 8px;
+    text-align: center;
+    transform: scale(0.9);
+    opacity: 0;
+    pointer-events: none;
   }
 
-  .meter-badge {
-    height: 22px;
-    padding: 0 9px;
-    border-radius: 999px;
-    font-size: 0.72rem;
-    font-family: ui-monospace, SFMono-Regular, monospace;
-    font-weight: 700;
-    line-height: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  .dialog-15.open {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
   }
+
+  /* Rule 15 Bad: Equal 250ms enter and 250ms exit */
+  .dialog-15-bad {
+    transition: opacity calc(250ms * var(--speed)) var(--ease-out), transform calc(250ms * var(--speed)) var(--ease-out);
+  }
+
+  /* Rule 15 Good: 250ms enter, 200ms exit (20% faster) */
+  .dialog-15-good {
+    transition: opacity calc(200ms * var(--speed)) var(--ease-out), transform calc(200ms * var(--speed)) var(--ease-out);
+  }
+  .dialog-15-good.open {
+    transition: opacity calc(250ms * var(--speed)) var(--ease-out), transform calc(250ms * var(--speed)) var(--ease-out);
+  }
+
+  .meter-bar-track {
+    width: 100%;
+    height: 4px;
+    background: var(--card-subtle);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .meter-bar-fill {
+    height: 100%;
+    width: 100%;
+    background: var(--bad);
+  }
+  .dialog-15-good .meter-bar-fill { background: var(--good); }
 
   /* ========================================================= */
   /* RULE 16: OVERLAP OUTGOING AND INCOMING VIEWS              */
   /* ========================================================= */
   .step-deck {
     position: relative;
-    width: 180px;
-    height: 74px;
+    width: 190px;
+    height: 76px;
     overflow: hidden;
     border-radius: 8px;
   }
@@ -1202,7 +1213,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-size: 0.76rem;
+    font-size: 0.78rem;
     font-weight: 600;
   }
 
@@ -1210,16 +1221,12 @@
   .step-bad-1 {
     transition: opacity calc(140ms * var(--speed)) ease-out;
   }
-  .step-bad-1.fade-out {
-    opacity: 0;
-  }
+  .step-bad-1.fade-out { opacity: 0; }
   .step-bad-2 {
     opacity: 0;
     transition: opacity calc(140ms * var(--speed)) ease-out;
   }
-  .step-bad-2.fade-in {
-    opacity: 1;
-  }
+  .step-bad-2.fade-in { opacity: 1; }
 
   /* Rule 16 Good: concurrent crossfade overlap */
   .step-good-1 {
@@ -1227,11 +1234,11 @@
   }
   .step-good-1.fade-out {
     opacity: 0;
-    transform: translateX(-12px);
+    transform: translateX(-16px);
   }
   .step-good-2 {
     opacity: 0;
-    transform: translateX(12px);
+    transform: translateX(16px);
     transition: opacity calc(180ms * var(--speed)) var(--ease-out), transform calc(180ms * var(--speed)) var(--ease-out);
   }
   .step-good-2.fade-in {
@@ -1249,16 +1256,16 @@
     border: 1px solid var(--line);
     border-radius: 8px;
     padding: 3px;
-    width: 180px;
+    width: 190px;
   }
 
   .tab-btn {
     flex: 1;
-    height: 28px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.74rem;
+    font-size: 0.76rem;
     font-weight: 600;
     color: var(--muted);
     border: none;
@@ -1268,7 +1275,7 @@
     line-height: 1;
   }
 
-  /* Rule 17 Bad: opacity crossfade causing ghosting blur */
+  /* Rule 17 Bad: opacity crossfade ghosting */
   .tab-bad-pill {
     position: absolute;
     top: 3px;
@@ -1276,7 +1283,7 @@
     width: calc(50% - 3px);
     background: var(--card);
     border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
     transition: opacity calc(200ms * var(--speed)) ease-out;
     opacity: 1;
   }
@@ -1290,7 +1297,7 @@
     width: calc(50% - 3px);
     background: var(--card);
     border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
     transition: transform calc(200ms * var(--speed)) var(--ease-out);
     transform: translateX(0);
   }
@@ -1302,13 +1309,13 @@
   /* RULE 18: CROSSFADE ICONS WITH SCALE & BLUR                */
   /* ========================================================= */
   .btn-icon-swap {
-    height: 38px;
-    padding: 0 16px;
+    height: 40px;
+    padding: 0 18px;
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 8px;
     color: var(--ink);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
@@ -1317,22 +1324,20 @@
     transition: border-color 140ms var(--ease-out);
   }
 
-  .btn-icon-swap:hover {
-    border-color: var(--muted);
-  }
+  .btn-icon-swap:hover { border-color: var(--muted); }
 
   .icon-holder {
     position: relative;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
   }
 
   .icon-svg {
     position: absolute;
     top: 0;
     left: 0;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
@@ -1346,7 +1351,7 @@
   .btn-icon-swap.copied .icon-bad-copy { display: none; }
   .btn-icon-swap.copied .icon-bad-check { display: block; color: var(--accent); }
 
-  /* Rule 18 Good: scale to 0.6 + blur(4px) */
+  /* Rule 18 Good: scale to 0.5 + blur(5px) optical crossfade */
   .icon-good-copy {
     opacity: 1;
     transform: scale(1);
@@ -1355,14 +1360,14 @@
   }
   .btn-icon-swap.copied .icon-good-copy {
     opacity: 0;
-    transform: scale(0.6);
-    filter: blur(4px);
+    transform: scale(0.5);
+    filter: blur(5px);
   }
 
   .icon-good-check {
     opacity: 0;
-    transform: scale(0.6);
-    filter: blur(4px);
+    transform: scale(0.5);
+    filter: blur(5px);
     color: var(--accent);
     transition: opacity calc(180ms * var(--speed)) var(--ease-out), transform calc(180ms * var(--speed)) var(--ease-out), filter calc(180ms * var(--speed)) var(--ease-out);
   }
@@ -1376,32 +1381,48 @@
   /* RULE 19: RUBBER BAND PAST DRAG BOUNDARIES                 */
   /* ========================================================= */
   .rubber-stage {
-    width: 180px;
-    height: 64px;
+    width: 190px;
+    height: 68px;
     background: var(--card-subtle);
     border: 1px solid var(--line);
     border-radius: 8px;
     position: relative;
     display: flex;
     align-items: center;
-    padding: 0 8px;
+    padding: 0 10px;
+    touch-action: none;
+  }
+
+  .rubber-boundary-line {
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: 20px;
+    width: 2px;
+    background: var(--line);
+    border-radius: 999px;
   }
 
   .rubber-puck {
-    width: 46px;
-    height: 46px;
+    width: 50px;
+    height: 50px;
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 6px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: 0.72rem;
     font-weight: 700;
     cursor: grab;
     position: absolute;
-    left: 8px;
+    left: 20px;
+    touch-action: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   }
+
+  .rubber-puck:active { cursor: grabbing; }
 
   /* ========================================================= */
   /* RULE 20: REUSE SHARED LAYOUT ID (FLIP)                    */
@@ -1417,46 +1438,8 @@
   }
 
   .flip-card {
-    width: 130px;
-    height: 64px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 8px 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-    cursor: pointer;
-    transition: transform calc(240ms * var(--speed)) var(--ease-out), width calc(240ms * var(--speed)) var(--ease-out), height calc(240ms * var(--speed)) var(--ease-out);
-  }
-
-  .flip-card.expanded {
-    width: 170px;
-    height: 116px;
-  }
-
-  .flip-card-title {
-    font-size: 0.76rem;
-    font-weight: 700;
-  }
-
-  .flip-card-body {
-    font-size: 0.68rem;
-    color: var(--muted);
-    opacity: 0;
-    transition: opacity calc(180ms * var(--speed)) var(--ease-out);
-  }
-
-  .flip-card.expanded .flip-card-body {
-    opacity: 1;
-  }
-
-  /* Rule 20 Bad: disconnected modal pop */
-  .modal-bad-pop {
-    position: absolute;
-    width: 170px;
-    height: 116px;
+    width: 136px;
+    height: 68px;
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 8px;
@@ -1464,10 +1447,46 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    cursor: pointer;
+    transition: transform calc(240ms * var(--speed)) var(--ease-out), width calc(240ms * var(--speed)) var(--ease-out), height calc(240ms * var(--speed)) var(--ease-out);
+  }
+
+  .flip-card.expanded {
+    width: 180px;
+    height: 120px;
+  }
+
+  .flip-card-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .flip-card-body {
+    font-size: 0.7rem;
+    color: var(--muted);
+    opacity: 0;
+    transition: opacity calc(180ms * var(--speed)) var(--ease-out);
+  }
+
+  .flip-card.expanded .flip-card-body { opacity: 1; }
+
+  /* Rule 20 Bad: disconnected modal pop */
+  .modal-bad-pop {
+    position: absolute;
+    width: 180px;
+    height: 120px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     box-shadow: 0 16px 36px rgba(0,0,0,0.5);
     opacity: 0;
     pointer-events: none;
-    transform: scale(0.9);
+    transform: scale(0.85);
     transition: opacity calc(180ms * var(--speed)) ease-out, transform calc(180ms * var(--speed)) ease-out;
     z-index: 30;
   }
@@ -1588,8 +1607,8 @@
       <div class="code-grid">
         <div class="code-block bad">/* BEFORE */
 transition: 
-  opacity 250ms ease-in,
-  transform 250ms ease-in;</div>
+  opacity 260ms ease-in,
+  transform 260ms ease-in;</div>
         <div class="code-block good">/* AFTER */
 transition: 
   opacity 200ms cubic-bezier(0.23, 1, 0.32, 1),
@@ -1709,7 +1728,7 @@ transition-delay: calc(index * 30ms);
           <h2>Scale to 0.97 on Press</h2>
           <span class="pill">Feedback</span>
         </div>
-        <p class="card-note">Buttons must confirm when pressed. Shrinking to scale 0.97 gives instant tactile confirmation of clicks.</p>
+        <p class="card-note">Buttons must confirm when pressed. Shrinking on press gives instant physical feedback that a click was registered.</p>
       </div>
       <button class="btn-compare" data-rule="04">▶ Play Comparison</button>
     </div>
@@ -1719,7 +1738,7 @@ transition-delay: calc(index * 30ms);
         <button class="press-target press-bad" id="btn-04-before">Add to Cart</button>
       </div>
       <div class="stage-box after" id="stage-04-after" title="Click to test After">
-        <span class="stage-tag">After (0.97 Scale)</span>
+        <span class="stage-tag">After (Tactile Press)</span>
         <button class="press-target press-good" id="btn-04-after">Add to Cart</button>
       </div>
     </div>
@@ -1728,11 +1747,11 @@ transition-delay: calc(index * 30ms);
       <div class="code-grid">
         <div class="code-block bad">/* BEFORE */
 button:active {
-  /* No transform feedback */
+  /* No active scale feedback */
 }</div>
         <div class="code-block good">/* AFTER */
 button:active {
-  transform: scale(0.97);
+  transform: scale(0.93) translateY(2px);
   transition: transform 120ms ease-out;
 }</div>
       </div>
@@ -1750,7 +1769,7 @@ button:active {
           <h2>Stretch Moving Knobs by 12%</h2>
           <span class="pill">Physics</span>
         </div>
-        <p class="card-note">Rigid sliding looks mechanical. Preserving volume by stretching 12% along the motion path adds natural fluidity.</p>
+        <p class="card-note">Rigid sliding looks mechanical. Preserving volume by stretching along the motion path adds natural fluidity.</p>
       </div>
       <button class="btn-compare" data-rule="05">▶ Play Comparison</button>
     </div>
@@ -1762,7 +1781,7 @@ button:active {
         </div>
       </div>
       <div class="stage-box after" id="stage-05-after" title="Click to toggle After">
-        <span class="stage-tag">After (12% Stretch)</span>
+        <span class="stage-tag">After (Stretch 18%)</span>
         <div class="switch-track" id="switch-good">
           <div class="switch-knob knob-good" id="knob-good-el"></div>
         </div>
@@ -1772,13 +1791,12 @@ button:active {
       <summary>▸ View CSS Diff</summary>
       <div class="code-grid">
         <div class="code-block bad">/* BEFORE */
-transform: translateX(24px);
+transform: translateX(28px);
 /* Rigid circle slides mechanically */</div>
         <div class="code-block good">/* AFTER */
-/* Stretches in motion, settles to 1 */
-transform: 
-  translateX(13px) 
-  scale(1.12, 0.89);</div>
+@keyframes stretch {
+  45% { transform: scale(1.22, 0.84); }
+}</div>
       </div>
     </details>
   </article>
@@ -1810,7 +1828,7 @@ transform:
         </div>
       </div>
       <div class="stage-box after" id="stage-06-after" title="Click to replay After">
-        <span class="stage-tag">After (50ms Offset)</span>
+        <span class="stage-tag">After (60ms Offset)</span>
         <div class="card-widget" id="card-widget-good">
           <div class="card-widget-top">
             <span class="card-widget-title">Production</span>
@@ -1830,8 +1848,8 @@ transform:
 }</div>
         <div class="code-block good">/* AFTER */
 .badge {
-  /* Settles 50ms after container */
-  transition-delay: 50ms;
+  /* Settles 60ms after container */
+  transition-delay: 60ms;
 }</div>
       </div>
     </details>
@@ -1870,13 +1888,13 @@ transform:
       <summary>▸ View CSS Diff</summary>
       <div class="code-grid">
         <div class="code-block bad">/* BEFORE */
-transform: translate(120px, -45px);
+transform: translate(130px, -50px);
 /* Linear diagonal trajectory */</div>
         <div class="code-block good">/* AFTER */
 @keyframes moveParabolicArc {
   0% { transform: translate(0, 0); }
-  45% { transform: translate(60px, -65px); }
-  100% { transform: translate(120px, -45px); }
+  40% { transform: translate(65px, -80px); }
+  100% { transform: translate(130px, -50px); }
 }</div>
       </div>
     </details>
@@ -1918,7 +1936,7 @@ button.saved {
 button.saved {
   animation: singlePulse 280ms ease-out;
 }
-/* 1.0 -> 1.08 -> 1.0 settle */</div>
+/* 1.0 -> 1.15 -> 1.0 settle */</div>
       </div>
     </details>
   </article>
@@ -2082,20 +2100,20 @@ transform-origin: top right;
       <button class="btn-compare" data-rule="12">▶ Play Comparison</button>
     </div>
     <div class="comparison-stage">
-      <div class="stage-box before" id="stage-12-before" title="Click to dismiss Before">
+      <div class="stage-box before" id="stage-12-before" title="Click to toggle Before">
         <span class="stage-tag">Before (Fade Center)</span>
         <div class="anchor-corner">
-          <button class="btn-menu-trigger anchor-btn">Close ▾</button>
+          <button class="btn-menu-trigger anchor-btn" id="btn-12-before">Toggle ▾</button>
           <div class="pop-corner pop-exit-bad" id="pop-12-bad">
             <div style="font-size:0.78rem; font-weight:700;">Notifications</div>
             <div style="font-size:0.7rem; color:var(--muted); margin-top:2px;">Fades out to center</div>
           </div>
         </div>
       </div>
-      <div class="stage-box after" id="stage-12-after" title="Click to dismiss After">
+      <div class="stage-box after" id="stage-12-after" title="Click to toggle After">
         <span class="stage-tag">After (Exit to Trigger)</span>
         <div class="anchor-corner">
-          <button class="btn-menu-trigger anchor-btn">Close ▾</button>
+          <button class="btn-menu-trigger anchor-btn" id="btn-12-after">Toggle ▾</button>
           <div class="pop-corner pop-exit-good" id="pop-12-good">
             <div style="font-size:0.78rem; font-weight:700;">Notifications</div>
             <div style="font-size:0.7rem; color:var(--muted); margin-top:2px;">Collapses to button</div>
@@ -2153,7 +2171,7 @@ transform-origin: top right;
         <div class="code-block bad">/* BEFORE */
 /* Multiple rubber-band bounces */
 bounce: 0.4;
-overshoot: 1.15;</div>
+overshoot: 1.18;</div>
         <div class="code-block good">/* AFTER */
 /* Critically damped settle */
 cubic-bezier(0.23, 1, 0.32, 1);
@@ -2178,16 +2196,22 @@ overshoot: 0;</div>
       <button class="btn-compare" data-rule="14">▶ Play Comparison</button>
     </div>
     <div class="comparison-stage">
-      <div class="stage-box before" id="stage-14-before">
+      <div class="stage-box before" id="stage-14-before" title="Drag card left & right">
         <span class="stage-tag">Before (Tween Lag)</span>
         <div class="drag-container" id="drag-container-bad">
-          <div class="drag-card drag-bad" id="drag-card-bad">Drag</div>
+          <div class="drag-card drag-bad" id="drag-card-bad">
+            <span>Drag</span>
+            <span style="font-size:0.58rem; color:var(--muted);">220ms lag</span>
+          </div>
         </div>
       </div>
-      <div class="stage-box after" id="stage-14-after">
+      <div class="stage-box after" id="stage-14-after" title="Drag card left & right">
         <span class="stage-tag">After (1:1 Direct)</span>
         <div class="drag-container" id="drag-container-good">
-          <div class="drag-card drag-good" id="drag-card-good">Drag</div>
+          <div class="drag-card drag-good" id="drag-card-good">
+            <span>Drag</span>
+            <span style="font-size:0.58rem; color:var(--good);">Instant</span>
+          </div>
         </div>
       </div>
     </div>
@@ -2224,24 +2248,22 @@ overshoot: 0;</div>
       <button class="btn-compare" data-rule="15">▶ Play Comparison</button>
     </div>
     <div class="comparison-stage">
-      <div class="stage-box before" id="stage-15-before" title="Click to test Before">
+      <div class="stage-box before" id="stage-15-before" title="Click to test open & close">
         <span class="stage-tag">Before (Equal 250ms)</span>
-        <div class="meter-box">
-          <div class="menu-list menu-r1-bad" id="menu-15-bad" style="position:static; opacity:1; width:140px; box-shadow:none;">
-            <div class="menu-item">Enter: 250ms</div>
-            <div class="menu-item">Exit: 250ms</div>
-          </div>
-          <span class="meter-badge pill" id="meter-15-bad">Speed: 100%</span>
+        <div class="dialog-15 dialog-15-bad open" id="dialog-15-bad">
+          <div style="font-size:0.78rem; font-weight:700;">Export File</div>
+          <div class="meter-bar-track"><div class="meter-bar-fill"></div></div>
+          <div style="font-size:0.7rem; color:var(--muted);">Enter 250ms · Exit 250ms</div>
+          <button class="btn" style="height:26px; padding:0 8px; font-size:0.7rem;">Dismiss</button>
         </div>
       </div>
-      <div class="stage-box after" id="stage-15-after" title="Click to test After">
+      <div class="stage-box after" id="stage-15-after" title="Click to test open & close">
         <span class="stage-tag">After (200ms Exit)</span>
-        <div class="meter-box">
-          <div class="menu-list menu-r1-good" id="menu-15-good" style="position:static; opacity:1; width:140px; box-shadow:none;">
-            <div class="menu-item">Enter: 250ms</div>
-            <div class="menu-item">Exit: 200ms</div>
-          </div>
-          <span class="meter-badge pill" id="meter-15-good" style="color:var(--good); border-color:var(--good-border);">20% Faster Dismiss</span>
+        <div class="dialog-15 dialog-15-good open" id="dialog-15-good">
+          <div style="font-size:0.78rem; font-weight:700;">Export File</div>
+          <div class="meter-bar-track"><div class="meter-bar-fill"></div></div>
+          <div style="font-size:0.7rem; color:var(--good); font-weight:600;">Enter 250ms · Exit 200ms</div>
+          <button class="btn btn-accent" style="height:26px; padding:0 8px; font-size:0.7rem;">Dismiss</button>
         </div>
       </div>
     </div>
@@ -2408,8 +2430,8 @@ display: none -> display: block;
 /* Instant hard cut */</div>
         <div class="code-block good">/* AFTER */
 opacity: 0;
-transform: scale(0.6);
-filter: blur(4px);</div>
+transform: scale(0.5);
+filter: blur(5px);</div>
       </div>
     </details>
   </article>
@@ -2430,16 +2452,24 @@ filter: blur(4px);</div>
       <button class="btn-compare" data-rule="19">▶ Play Comparison</button>
     </div>
     <div class="comparison-stage">
-      <div class="stage-box before" id="stage-19-before">
-        <span class="stage-tag">Before (Brick Wall Stop)</span>
-        <div class="rubber-stage">
-          <div class="rubber-puck" id="rubber-puck-bad">Limit</div>
+      <div class="stage-box before" id="stage-19-before" title="Drag puck left past line">
+        <span class="stage-tag">Before (Brick Wall)</span>
+        <div class="rubber-stage" id="rubber-container-bad">
+          <div class="rubber-boundary-line"></div>
+          <div class="rubber-puck" id="rubber-puck-bad">
+            <span>Limit</span>
+            <span style="font-size:0.58rem; color:var(--bad);">Hard Stop</span>
+          </div>
         </div>
       </div>
-      <div class="stage-box after" id="stage-19-after">
+      <div class="stage-box after" id="stage-19-after" title="Drag puck left past line">
         <span class="stage-tag">After (Elastic Resistance)</span>
-        <div class="rubber-stage">
-          <div class="rubber-puck" id="rubber-puck-good">Limit</div>
+        <div class="rubber-stage" id="rubber-container-good">
+          <div class="rubber-boundary-line"></div>
+          <div class="rubber-puck" id="rubber-puck-good">
+            <span>Limit</span>
+            <span style="font-size:0.58rem; color:var(--good);">Elastic</span>
+          </div>
         </div>
       </div>
     </div>
@@ -2450,8 +2480,8 @@ filter: blur(4px);</div>
 x = Math.max(0, x);
 /* Hard stop at 0px */</div>
         <div class="code-block good">/* AFTER */
-x = x &lt; 0 ? (x * 0.3) : x;
-/* Elastic resistance past 0px */</div>
+x = x &lt; 0 ? (x * 0.25) : x;
+/* Elastic decay past 0px */</div>
       </div>
     </details>
   </article>
@@ -2523,21 +2553,21 @@ layoutId="project-card"
     { num: 1, name: "Ease-out for entrances", cat: "timing", before: "Ease-in starts sluggishly and halts abruptly", after: "Ease-out starts instantly and settles gently" },
     { num: 2, name: "Keep popovers fast (150–250ms)", cat: "timing", before: "Takes 600ms, making routine UI feel unresponsive", after: "Fast 200ms duration feels crisp and ready" },
     { num: 3, name: "Stagger list rows by ~30ms", cat: "timing", before: "180ms delay between items makes users wait 800ms+", after: "30ms offset produces cascading rhythm in ~240ms total" },
-    { num: 4, name: "Scale to 0.97 on press", cat: "feedback", before: "No scale feedback when clicked (dead click)", after: "Subtle scale(0.97) provides instant tactile confirmation" },
-    { num: 5, name: "Stretch moving knobs by 12%", cat: "spatial", before: "Rigid circle slides across like a mechanical block", after: "Knob stretches 12% in transit, then snaps back to round" },
-    { num: 6, name: "Stagger secondary details (~50ms)", cat: "spatial", before: "Container and badges appear simultaneously", after: "Card arrives first, badge settles 50ms later" },
+    { num: 4, name: "Scale to 0.97 on press", cat: "feedback", before: "No scale feedback when clicked (dead click)", after: "Tactile press down gives instant physical confirmation" },
+    { num: 5, name: "Stretch moving knobs by 12%", cat: "spatial", before: "Rigid circle slides across like a mechanical block", after: "Knob stretches 18% in transit, then snaps back to round" },
+    { num: 6, name: "Stagger secondary details (~50ms)", cat: "spatial", before: "Container and badges appear simultaneously", after: "Card arrives first, badge settles 60ms later" },
     { num: 7, name: "Natural curved arcs for movement", cat: "spatial", before: "Rigid straight diagonal vector", after: "Parabolic upward arc follows physical momentum" },
-    { num: 8, name: "Pulse to confirm success", cat: "feedback", before: "Silent text swap with no visual confirmation", after: "Text changes with a crisp single 300ms scale pulse" },
-    { num: 9, name: "Ease-in-out for on-screen moves", cat: "timing", before: "Constant linear speed feels robotic", after: "Natural acceleration and deceleration" },
+    { num: 8, name: "Pulse to confirm success", cat: "feedback", before: "Silent text swap with no visual confirmation", after: "Text changes with a crisp 300ms pulse and ring" },
+    { num: 9, name: "Ease-in-out for on-screen moves", cat: "timing", before: "Constant linear speed feels robotic", after: "Smooth acceleration from rest and gentle brake" },
     { num: 10, name: "Start popovers at scale 0.95", cat: "spatial", before: "Zooms in from a tiny pinprick scale(0)", after: "Enters from scale(0.95) with optical stability" },
     { num: 11, name: "Open from the trigger button", cat: "spatial", before: "Expands from arbitrary center of screen/popover", after: "Expands directly outward from the clicked button" },
     { num: 12, name: "Close toward the trigger button", cat: "spatial", before: "Dissolves in center into nowhere", after: "Retracts back into the trigger that spawned it" },
     { num: 13, name: "Avoid bouncy springs in everyday UI", cat: "spatial", before: "Underdamped rubber-band wobble delays user", after: "Critically damped settle with zero overshoot" },
-    { num: 14, name: "Direct 1:1 pointer tracking on drag", cat: "feedback", before: "200ms tween lag follows sluggishly behind cursor", after: "Instant 1:1 tracking, easing applied only on release" },
+    { num: 14, name: "Direct 1:1 pointer tracking on drag", cat: "feedback", before: "220ms tween lag follows sluggishly behind cursor", after: "Instant 1:1 tracking, easing applied only on release" },
     { num: 15, name: "Make exits ~20% faster than entrances", cat: "timing", before: "250ms enter, 250ms exit (lingers too long)", after: "250ms enter, 200ms exit (20% faster dismiss)" },
     { num: 16, name: "Overlap outgoing and incoming views", cat: "transitions", before: "Step 1 fades out to blank gap before Step 2", after: "Concurrent crossfade with continuous visual flow" },
     { num: 17, name: "Use masks for reveals & color changes", cat: "transitions", before: "Opacity crossfade creates muddy blurry text ghosting", after: "Sharp sliding geometry preserves crisp contrast" },
-    { num: 18, name: "Crossfade icons with scale & blur", cat: "transitions", before: "Abrupt hard cut from Copy to Check", after: "Scale(0.6) + 4px blur creates seamless optical transition" },
+    { num: 18, name: "Crossfade icons with scale & blur", cat: "transitions", before: "Abrupt hard cut from Copy to Check", after: "Scale(0.5) + 5px blur creates seamless optical swap" },
     { num: 19, name: "Rubber-band past drag boundaries", cat: "feedback", before: "Rigid brick-wall hard stop at edge (x = 0)", after: "Diminishing logarithmic elastic resistance past edge" },
     { num: 20, name: "Reuse shared layout ID (FLIP)", cat: "transitions", before: "Card vanishes and disconnected modal pops in center", after: "Card's actual bounds morph smoothly into detail view" }
   ];
@@ -2667,12 +2697,13 @@ layoutId="project-card"
         const sa = document.getElementById("switch-good");
         const ka = document.getElementById("knob-good-el");
         const turningOn = !sa.classList.contains("on");
-        ka.classList.add(turningOn ? "stretching-right" : "stretching-left");
-        sb.classList.toggle("on");
-        sa.classList.toggle("on");
-        setTimeout(() => {
-          ka.classList.remove("stretching-right", "stretching-left");
-        }, 150);
+        
+        sb.classList.toggle("on", turningOn);
+        sa.classList.toggle("on", turningOn);
+
+        ka.classList.remove("anim-on", "anim-off");
+        void ka.offsetWidth;
+        ka.classList.add(turningOn ? "anim-on" : "anim-off");
         break;
       }
       case "06": {
@@ -2764,12 +2795,12 @@ layoutId="project-card"
         break;
       }
       case "14": {
-        // Automated comparative drag stroke
+        // Comparative simulated drag stroke
         const b = document.getElementById("drag-card-bad");
         const a = document.getElementById("drag-card-good");
         a.classList.remove("releasing");
-        b.style.transform = "translateX(100px)";
-        a.style.transform = "translateX(100px)";
+        b.style.transform = "translateX(110px)";
+        a.style.transform = "translateX(110px)";
         setTimeout(() => {
           a.classList.add("releasing");
           b.style.transform = "translateX(0)";
@@ -2778,14 +2809,14 @@ layoutId="project-card"
         break;
       }
       case "15": {
-        const b = document.getElementById("menu-15-bad");
-        const a = document.getElementById("menu-15-good");
-        b.style.opacity = "0";
-        a.style.opacity = "0";
+        const b = document.getElementById("dialog-15-bad");
+        const a = document.getElementById("dialog-15-good");
+        b.classList.remove("open");
+        a.classList.remove("open");
         setTimeout(() => {
-          b.style.opacity = "1";
-          a.style.opacity = "1";
-        }, 400);
+          b.classList.add("open");
+          a.classList.add("open");
+        }, 300);
         break;
       }
       case "16": {
@@ -2794,13 +2825,11 @@ layoutId="project-card"
         const a1 = document.getElementById("step-16-good-1");
         const a2 = document.getElementById("step-16-good-2");
         
-        // Before side: blank gap between views
         b1.classList.add("fade-out");
         setTimeout(() => {
           b2.classList.add("fade-in");
         }, 220);
 
-        // After side: concurrent crossfade
         a1.classList.add("fade-out");
         a2.classList.add("fade-in");
 
@@ -2815,7 +2844,7 @@ layoutId="project-card"
       case "17": {
         const pb = document.getElementById("tab-pill-bad");
         const pa = document.getElementById("tab-pill-good");
-        pb.style.opacity = "0.3";
+        pb.style.opacity = "0.2";
         setTimeout(() => pb.style.opacity = "1", 180);
         pa.classList.toggle("right");
         break;
@@ -2833,12 +2862,13 @@ layoutId="project-card"
         break;
       }
       case "19": {
+        // Comparative pull past boundary
         const b = document.getElementById("rubber-puck-bad");
         const a = document.getElementById("rubber-puck-good");
-        b.style.transition = "transform 150ms ease-out";
-        a.style.transition = "transform 150ms ease-out";
+        b.style.transition = "transform 140ms ease-out";
+        a.style.transition = "transform 140ms ease-out";
         b.style.transform = "translateX(0px)"; // hits brick wall
-        a.style.transform = "translateX(-24px)"; // elastic boundary give
+        a.style.transform = "translateX(-28px)"; // elastic boundary give
         setTimeout(() => {
           b.style.transform = "translateX(0)";
           a.style.transform = "translateX(0)";
@@ -2870,7 +2900,7 @@ layoutId="project-card"
     }
   }
 
-  // Stage Box direct interactions
+  // Stage Box direct click listeners
   document.getElementById("stage-01-before").addEventListener("click", () => {
     const el = document.getElementById("menu-01-before");
     const st = document.getElementById("stage-01-before");
@@ -2910,22 +2940,34 @@ layoutId="project-card"
     el.classList.add("replaying");
   });
 
-  document.getElementById("btn-04-before").addEventListener("click", () => {});
-  document.getElementById("btn-04-after").addEventListener("click", function() {
-    this.classList.add("pressed");
-    setTimeout(() => this.classList.remove("pressed"), 180);
+  // Rule 4 direct clicks
+  document.getElementById("stage-04-before").addEventListener("click", () => {
+    // Dead click: zero scale reaction
+    const btn = document.getElementById("btn-04-before");
+    btn.style.opacity = "0.85";
+    setTimeout(() => btn.style.opacity = "1", 100);
+  });
+  document.getElementById("stage-04-after").addEventListener("click", () => {
+    const btn = document.getElementById("btn-04-after");
+    btn.classList.add("pressed");
+    setTimeout(() => btn.classList.remove("pressed"), 180);
   });
 
-  document.getElementById("stage-05-before").addEventListener("click", () => document.getElementById("switch-bad").classList.toggle("on"));
+  // Rule 5 Switch toggles
+  document.getElementById("stage-05-before").addEventListener("click", () => {
+    document.getElementById("switch-bad").classList.toggle("on");
+  });
   document.getElementById("stage-05-after").addEventListener("click", () => {
     const sw = document.getElementById("switch-good");
     const kn = document.getElementById("knob-good-el");
     const turningOn = !sw.classList.contains("on");
-    kn.classList.add(turningOn ? "stretching-right" : "stretching-left");
-    sw.classList.toggle("on");
-    setTimeout(() => kn.classList.remove("stretching-right", "stretching-left"), 150);
+    sw.classList.toggle("on", turningOn);
+    kn.classList.remove("anim-on", "anim-off");
+    void kn.offsetWidth;
+    kn.classList.add(turningOn ? "anim-on" : "anim-off");
   });
 
+  // Rule 6 Card + Badge
   document.getElementById("stage-06-before").addEventListener("click", () => {
     const w = document.getElementById("card-widget-bad");
     w.classList.remove("replaying");
@@ -2939,7 +2981,10 @@ layoutId="project-card"
     w.classList.add("replaying");
   });
 
-  document.getElementById("stage-07-before").addEventListener("click", () => document.getElementById("arc-bad-puck").classList.toggle("moved"));
+  // Rule 7 Arc movement
+  document.getElementById("stage-07-before").addEventListener("click", () => {
+    document.getElementById("arc-bad-puck").classList.toggle("moved");
+  });
   document.getElementById("stage-07-after").addEventListener("click", () => {
     const a = document.getElementById("arc-good-puck");
     if (a.classList.contains("moved")) {
@@ -2951,26 +2996,31 @@ layoutId="project-card"
     }
   });
 
-  document.getElementById("btn-save-bad").addEventListener("click", function() {
-    this.classList.add("saved");
-    this.textContent = "Saved ✓";
+  // Rule 8 Pulse
+  document.getElementById("stage-08-before").addEventListener("click", () => {
+    const btn = document.getElementById("btn-save-bad");
+    btn.classList.add("saved");
+    btn.textContent = "Saved ✓";
     setTimeout(() => {
-      this.classList.remove("saved");
-      this.textContent = "Save Changes";
+      btn.classList.remove("saved");
+      btn.textContent = "Save Changes";
     }, 1200);
   });
-  document.getElementById("btn-save-good").addEventListener("click", function() {
-    this.classList.add("saved");
-    this.textContent = "Saved ✓";
+  document.getElementById("stage-08-after").addEventListener("click", () => {
+    const btn = document.getElementById("btn-save-good");
+    btn.classList.add("saved");
+    btn.textContent = "Saved ✓";
     setTimeout(() => {
-      this.classList.remove("saved");
-      this.textContent = "Save Changes";
+      btn.classList.remove("saved");
+      btn.textContent = "Save Changes";
     }, 1200);
   });
 
+  // Rule 9 Ease-in-out
   document.getElementById("stage-09-before").addEventListener("click", () => document.getElementById("track-slide-bad").classList.toggle("moved"));
   document.getElementById("stage-09-after").addEventListener("click", () => document.getElementById("track-slide-good").classList.toggle("moved"));
 
+  // Rule 10 Scale 0.95
   document.getElementById("stage-10-before").addEventListener("click", () => {
     const el = document.getElementById("pop-10-bad");
     const st = document.getElementById("stage-10-before");
@@ -2984,6 +3034,7 @@ layoutId="project-card"
     st.classList.toggle("is-active", el.classList.contains("open"));
   });
 
+  // Rule 11 Origin
   document.getElementById("stage-11-before").addEventListener("click", () => {
     const el = document.getElementById("pop-11-bad");
     const st = document.getElementById("stage-11-before");
@@ -2997,9 +3048,11 @@ layoutId="project-card"
     st.classList.toggle("is-active", el.classList.contains("open"));
   });
 
+  // Rule 12 Close toward trigger
   document.getElementById("stage-12-before").addEventListener("click", () => document.getElementById("pop-12-bad").classList.toggle("closed"));
   document.getElementById("stage-12-after").addEventListener("click", () => document.getElementById("pop-12-good").classList.toggle("closed"));
 
+  // Rule 13 Spring bounce
   document.getElementById("stage-13-before").addEventListener("click", () => {
     const el = document.getElementById("spring-bad-dialog");
     el.classList.remove("replaying");
@@ -3013,6 +3066,11 @@ layoutId="project-card"
     el.classList.add("replaying");
   });
 
+  // Rule 15 Open/Close Dialog
+  document.getElementById("stage-15-before").addEventListener("click", () => document.getElementById("dialog-15-bad").classList.toggle("open"));
+  document.getElementById("stage-15-after").addEventListener("click", () => document.getElementById("dialog-15-good").classList.toggle("open"));
+
+  // Rule 16 Step Deck
   document.getElementById("stage-16-before").addEventListener("click", () => {
     const b1 = document.getElementById("step-16-bad-1");
     const b2 = document.getElementById("step-16-bad-2");
@@ -3034,24 +3092,29 @@ layoutId="project-card"
     }, 1500);
   });
 
+  // Rule 17 Tabs
   document.getElementById("stage-17-before").addEventListener("click", () => {
     const pb = document.getElementById("tab-pill-bad");
-    pb.style.opacity = "0.3";
+    pb.style.opacity = "0.2";
     setTimeout(() => pb.style.opacity = "1", 180);
   });
   document.getElementById("stage-17-after").addEventListener("click", () => {
     document.getElementById("tab-pill-good").classList.toggle("right");
   });
 
-  document.getElementById("btn-icon-bad").addEventListener("click", function() {
-    this.classList.toggle("copied");
-    document.getElementById("text-icon-bad").textContent = this.classList.contains("copied") ? "Copied!" : "Copy Key";
+  // Rule 18 Icons
+  document.getElementById("stage-18-before").addEventListener("click", () => {
+    const btn = document.getElementById("btn-icon-bad");
+    btn.classList.toggle("copied");
+    document.getElementById("text-icon-bad").textContent = btn.classList.contains("copied") ? "Copied!" : "Copy Key";
   });
-  document.getElementById("btn-icon-good").addEventListener("click", function() {
-    this.classList.toggle("copied");
-    document.getElementById("text-icon-good").textContent = this.classList.contains("copied") ? "Copied!" : "Copy Key";
+  document.getElementById("stage-18-after").addEventListener("click", () => {
+    const btn = document.getElementById("btn-icon-good");
+    btn.classList.toggle("copied");
+    document.getElementById("text-icon-good").textContent = btn.classList.contains("copied") ? "Copied!" : "Copy Key";
   });
 
+  // Rule 20 FLIP
   document.getElementById("stage-20-before").addEventListener("click", () => {
     const cb = document.getElementById("flip-card-bad");
     const mb = document.getElementById("modal-bad-pop");
@@ -3073,6 +3136,146 @@ layoutId="project-card"
     st.classList.toggle("is-active", ca.classList.contains("expanded"));
   });
 
+  // =========================================================
+  // REAL INTERACTIVE POINTER DRAG FOR RULE 14 & RULE 19
+  // =========================================================
+
+  // Rule 14 Drag Implementation (Tween Lag vs 1:1 Instant)
+  setupDragRule14();
+  function setupDragRule14() {
+    // Before: Drag with artificial 220ms lerp/lag
+    const bCard = document.getElementById("drag-card-bad");
+    const bContainer = document.getElementById("drag-container-bad");
+    let bDragging = false;
+    let bStartX = 0;
+    let bCurrentX = 0;
+
+    bCard.addEventListener("pointerdown", (e) => {
+      bDragging = true;
+      bStartX = e.clientX - bCurrentX;
+      bCard.setPointerCapture(e.pointerId);
+    });
+
+    bCard.addEventListener("pointermove", (e) => {
+      if (!bDragging) return;
+      const rawX = e.clientX - bStartX;
+      bCurrentX = Math.max(0, Math.min(124, rawX));
+      // Applies with CSS transition: 220ms ease-out (feels laggy)
+      bCard.style.transform = `translateX(${bCurrentX}px)`;
+    });
+
+    const endBDrag = () => {
+      if (!bDragging) return;
+      bDragging = false;
+      bCurrentX = 0;
+      bCard.style.transform = "translateX(0)";
+    };
+    bCard.addEventListener("pointerup", endBDrag);
+    bCard.addEventListener("pointercancel", endBDrag);
+
+    // After: 1:1 Instant tracking with zero delay
+    const aCard = document.getElementById("drag-card-good");
+    let aDragging = false;
+    let aStartX = 0;
+    let aCurrentX = 0;
+
+    aCard.addEventListener("pointerdown", (e) => {
+      aDragging = true;
+      aCard.classList.remove("releasing");
+      aStartX = e.clientX - aCurrentX;
+      aCard.setPointerCapture(e.pointerId);
+    });
+
+    aCard.addEventListener("pointermove", (e) => {
+      if (!aDragging) return;
+      const rawX = e.clientX - aStartX;
+      aCurrentX = Math.max(0, Math.min(124, rawX));
+      // Instant 1:1 hardware translation
+      aCard.style.transform = `translateX(${aCurrentX}px)`;
+    });
+
+    const endADrag = () => {
+      if (!aDragging) return;
+      aDragging = false;
+      aCurrentX = 0;
+      aCard.classList.add("releasing");
+      aCard.style.transform = "translateX(0)";
+    };
+    aCard.addEventListener("pointerup", endADrag);
+    aCard.addEventListener("pointercancel", endADrag);
+  }
+
+  // Rule 19 Rubber-band Boundary Drag Implementation
+  setupRubberDragRule19();
+  function setupRubberDragRule19() {
+    // Before: Hard wall stop at x = 0
+    const bPuck = document.getElementById("rubber-puck-bad");
+    let bDragging = false;
+    let bStartX = 0;
+    let bCurrentX = 0;
+
+    bPuck.addEventListener("pointerdown", (e) => {
+      bDragging = true;
+      bPuck.style.transition = "none";
+      bStartX = e.clientX - bCurrentX;
+      bPuck.setPointerCapture(e.pointerId);
+    });
+
+    bPuck.addEventListener("pointermove", (e) => {
+      if (!bDragging) return;
+      const rawDelta = e.clientX - bStartX;
+      // Hard wall stop: cannot go past 0px
+      bCurrentX = Math.max(0, Math.min(110, rawDelta));
+      bPuck.style.transform = `translateX(${bCurrentX}px)`;
+    });
+
+    const endB = () => {
+      if (!bDragging) return;
+      bDragging = false;
+      bPuck.style.transition = "transform 180ms var(--ease-out)";
+      bCurrentX = 0;
+      bPuck.style.transform = "translateX(0)";
+    };
+    bPuck.addEventListener("pointerup", endB);
+    bPuck.addEventListener("pointercancel", endB);
+
+    // After: Elastic logarithmic resistance past boundary
+    const aPuck = document.getElementById("rubber-puck-good");
+    let aDragging = false;
+    let aStartX = 0;
+    let aCurrentX = 0;
+
+    aPuck.addEventListener("pointerdown", (e) => {
+      aDragging = true;
+      aPuck.style.transition = "none";
+      aStartX = e.clientX - aCurrentX;
+      aPuck.setPointerCapture(e.pointerId);
+    });
+
+    aPuck.addEventListener("pointermove", (e) => {
+      if (!aDragging) return;
+      const rawDelta = e.clientX - aStartX;
+      if (rawDelta < 0) {
+        // Elastic rubber band resistance formula
+        bCurrentX = rawDelta * 0.25;
+      } else {
+        bCurrentX = Math.min(110, rawDelta);
+      }
+      aPuck.style.transform = `translateX(${bCurrentX}px)`;
+    });
+
+    const endA = () => {
+      if (!aDragging) return;
+      aDragging = false;
+      aPuck.style.transition = "transform 220ms var(--ease-out)";
+      aCurrentX = 0;
+      aPuck.style.transform = "translateX(0)";
+    };
+    aPuck.addEventListener("pointerup", endA);
+    aPuck.addEventListener("pointercancel", endA);
+  }
+
+  // Testing hash helpers for headless screenshots
   if (window.location.hash.includes("test-light")) {
     document.documentElement.setAttribute("data-theme", "light");
     document.getElementById("theme-btn").textContent = "🌙 Dark Theme";
@@ -3080,12 +3283,6 @@ layoutId="project-card"
   if (window.location.hash.includes("test-open")) {
     playRule("01");
     playRule("02");
-  }
-  if (window.location.hash.includes("test-mid")) {
-    document.getElementById("rule-05").scrollIntoView();
-  }
-  if (window.location.hash.includes("test-bottom")) {
-    document.getElementById("rule-17").scrollIntoView();
   }
 
 })();

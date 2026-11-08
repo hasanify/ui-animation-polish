@@ -1,6 +1,6 @@
 ---
 name: ui-animation-polish
-description: Detailed rules for making UI animations and micro-interactions feel polished, with exact durations, easings, scales, transform origins and copy-ready CSS / Motion (Framer Motion) code. Ships a zero-dependency auditor, motion tokens, presets, references and interactive before/after examples. Use whenever the user is writing, reviewing or fixing UI motion (CSS transitions, Framer Motion / Motion, React, SwiftUI, dropdowns, popovers, modals, buttons, toggles, tabs, lists, drag interactions), or says an animation feels off, janky, slow, floaty, cheap, robotic or "not smooth", even if they never say "animation guidelines".
+description: Production-grade rules, exact durations, easings, and copy-ready presets for UI animations and micro-interactions. Includes a zero-dependency static linter and interactive examples. Use whenever the user is writing, reviewing, or fixing UI motion (CSS transitions, Framer Motion / Motion, React, SwiftUI, dropdowns, popovers, modals, buttons, toggles, tabs, lists, drag interactions), or says an animation feels off, janky, slow, floaty, cheap, robotic or "not smooth", even if they never say "animation guidelines".
 ---
 
 # UI Animation Polish

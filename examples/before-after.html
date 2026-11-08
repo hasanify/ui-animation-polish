@@ -60,31 +60,14 @@
   }
 
   header, main, footer, .matrix-container { max-width: 1160px; margin-inline: auto; }
-  .banner-arcs {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 480px;
-    height: 480px;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 0;
-  }
-  .banner-arcs svg {
-    position: absolute;
-    top: -50px;
-    right: -50px;
-  }
-  header { position: relative; }
-  .header-content { position: relative; z-index: 10; }
-
+  header { margin-bottom: 24px; }
 
   .eyebrow {
-    margin: 0 0 12px;
+    margin: 0 0 10px;
     color: var(--accent);
-    font-size: 12px;
-    font-weight: 650;
-    letter-spacing: 0.14em;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
@@ -94,7 +77,7 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
   h1 {
@@ -296,7 +279,11 @@
   }
 
   .pill {
-    padding: 2px 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 3px 6px;
     background: var(--card-subtle);
     border: 1px solid var(--line);
     border-radius: 4px;
@@ -343,13 +330,17 @@
 
   .label {
     position: absolute;
-    top: 6px;
+    top: 7px;
     left: 8px;
-    padding: 2px 7px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 3px 7px;
     border-radius: 4px;
     font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 
@@ -1114,29 +1105,17 @@
 <body>
 
 <header>
-  <div class="banner-arcs" aria-hidden="true">
-    <svg viewBox="0 0 560 560" width="560" height="560">
-      <ellipse cx="560" cy="0" rx="560" ry="560" fill="#0f1e17" />
-      <ellipse cx="560" cy="0" rx="480" ry="480" fill="#13281e" />
-      <ellipse cx="560" cy="0" rx="400" ry="400" fill="#183427" />
-      <ellipse cx="560" cy="0" rx="320" ry="320" fill="#1e4231" />
-      <ellipse cx="560" cy="0" rx="250" ry="250" fill="#25523d" />
-      <ellipse cx="560" cy="0" rx="180" ry="180" fill="#2d634a" />
-      <ellipse cx="560" cy="0" rx="120" ry="120" fill="#367658" />
-      <ellipse cx="560" cy="0" rx="70" ry="70" fill="#408b68" />
-    </svg>
-  </div>
   <div class="header-content">
     <div>
-      <p class="eyebrow">ui-animation-polish · interactive reference</p>
-      <h1>All 20 Rules in Action</h1>
+      <p class="eyebrow">Interactive Reference</p>
+      <h1>UI Animation Polish</h1>
       <p class="lede">
-        The difference between amateur and production motion is usually <strong>100–300ms</strong> and <strong>origin geometry</strong>, not a different animation library. Every rule from <code>SKILL.md</code> is shown side-by-side: common smell on the left, corrected fix on the right.
+        Side-by-side examples showing the difference small timing and easing adjustments make in everyday interface components.
       </p>
     </div>
     <div style="display:flex; gap:8px;">
-      <button class="btn-action" id="theme-btn" aria-label="Toggle theme">☼ Light Mode</button>
-      <button class="btn-action" id="matrix-btn">☰ All 20 Rules Matrix</button>
+      <button class="btn-action" id="theme-btn" aria-label="Toggle theme">☼ Light Theme</button>
+      <button class="btn-action" id="matrix-btn">☰ Rule Overview</button>
     </div>
   </div>
 
@@ -1147,32 +1126,32 @@
         <tr>
           <th>#</th>
           <th>Rule</th>
-          <th>Smell (Before)</th>
-          <th>Correction (After)</th>
-          <th>Demo #</th>
+          <th>Common Issue</th>
+          <th>Recommended Adjustment</th>
+          <th>Demo</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td><span class="rule-tag">1</span></td><td>Ease-out for entrances</td><td>ease-in starts slowly, sluggish reaction</td><td>ease-out front-loads motion, instant feel</td><td>#01, #05</td></tr>
-        <tr><td><span class="rule-tag">2</span></td><td>Popovers at 150–250ms</td><td>300–600ms delays routine menus</td><td>150–250ms fast perceived interaction</td><td>#01, #09</td></tr>
-        <tr><td><span class="rule-tag">3</span></td><td>Stagger list rows ~30ms</td><td>100–150ms cascades waste seconds</td><td>30ms tight cascade, total capped &lt;300ms</td><td>#05</td></tr>
-        <tr><td><span class="rule-tag">4</span></td><td>Scale to 0.97 on press</td><td>No press feedback or floaty scale(0.9)</td><td>scale(0.97) for ~150ms while held</td><td>#02</td></tr>
-        <tr><td><span class="rule-tag">5</span></td><td>Stretch moving knobs ~12%</td><td>Rigid round ball looks robotic</td><td>12% area-preserving squash/stretch</td><td>#03</td></tr>
-        <tr><td><span class="rule-tag">6</span></td><td>Stagger as details settle</td><td>Parent and children snap in together</td><td>Secondary badge/meta settles +50ms after parent</td><td>#10</td></tr>
-        <tr><td><span class="rule-tag">7</span></td><td>Arcs for object movement</td><td>Rigid straight diagonal travel</td><td>Curved parabolic arc mimics gravity</td><td>#11</td></tr>
-        <tr><td><span class="rule-tag">8</span></td><td>Pulse to confirm success</td><td>Label change alone, or looping attention</td><td>Instant text swap + single 300ms pulse</td><td>#06</td></tr>
-        <tr><td><span class="rule-tag">9</span></td><td>Ease-in-out for moves</td><td>Linear velocity feels mechanical</td><td>ease-in-out for traveling elements</td><td>#03, #11</td></tr>
-        <tr><td><span class="rule-tag">10</span></td><td>Start popovers at 0.95</td><td>scale(0) zooms from a pinprick</td><td>scale(0.95) gently settles into place</td><td>#01, #09</td></tr>
-        <tr><td><span class="rule-tag">11</span></td><td>Enter from the trigger</td><td>origin at center disconnects cause</td><td>origin at trigger anchors the element</td><td>#01, #09</td></tr>
-        <tr><td><span class="rule-tag">12</span></td><td>Exit toward the trigger</td><td>Disappears in random direction</td><td>Returns back into the element that spawned it</td><td>#01, #12</td></tr>
-        <tr><td><span class="rule-tag">13</span></td><td>No bounce on everyday UI</td><td>Cartoonish rubber-band oscillations</td><td>Critically damped spring with zero overshoot</td><td>#03, #13</td></tr>
-        <tr><td><span class="rule-tag">14</span></td><td>Don't tween while held</td><td>CSS transition active during pointer drag</td><td>1:1 pointer tracking, transition on release</td><td>#08</td></tr>
-        <tr><td><span class="rule-tag">15</span></td><td>Exits ~20% shorter</td><td>Dismiss takes just as long as entry</td><td>Exit runs 20% faster (160ms vs 200ms)</td><td>#01, #09, #12</td></tr>
-        <tr><td><span class="rule-tag">16</span></td><td>Overlap old and new states</td><td>un-overlapped wait mode causes empty black/blank frames</td><td>Old and new states crossfade concurrently</td><td>#14</td></tr>
-        <tr><td><span class="rule-tag">17</span></td><td>Masks for reveals and colour</td><td>Opacity crossfades produce muddy overlapping text</td><td>clip-path mask sweeps cleanly across</td><td>#07</td></tr>
-        <tr><td><span class="rule-tag">18</span></td><td>Crossfade icons with scale + blur</td><td>Abrupt cut or muddy opacity crossfade</td><td>Scale (0.6) + blur (4px) + opacity</td><td>#04</td></tr>
-        <tr><td><span class="rule-tag">19</span></td><td>Rubber band past bounds</td><td>Hard brick wall stop at scroll/drag limits</td><td>Diminishing logarithmic resistance</td><td>#08</td></tr>
-        <tr><td><span class="rule-tag">20</span></td><td>Reuse the same layoutId</td><td>Unmounts card and mounts disconnected modal</td><td>FLIP geometry morphs between states</td><td>#15</td></tr>
+        <tr><td><span class="rule-tag">1</span></td><td>Ease-out for entrances</td><td>Starts too slowly, feels laggy</td><td>Starts instantly, settles smoothly</td><td>#01, #05</td></tr>
+        <tr><td><span class="rule-tag">2</span></td><td>Keep popovers under 250ms</td><td>Takes too long for routine menus</td><td>Fast and responsive (150–250ms)</td><td>#01, #09</td></tr>
+        <tr><td><span class="rule-tag">3</span></td><td>Stagger list items ~30ms</td><td>Long cascades keep users waiting</td><td>Fast 30ms cascade, finishes under 300ms</td><td>#05</td></tr>
+        <tr><td><span class="rule-tag">4</span></td><td>Scale to 0.97 on press</td><td>No visual feedback when clicked</td><td>Subtle scale(0.97) while held</td><td>#02</td></tr>
+        <tr><td><span class="rule-tag">5</span></td><td>Stretch moving elements</td><td>Rigid sliding looks mechanical</td><td>Subtle 12% stretch along direction of motion</td><td>#03</td></tr>
+        <tr><td><span class="rule-tag">6</span></td><td>Stagger secondary details</td><td>Everything appears at once</td><td>Badges settle 50ms after main container</td><td>#10</td></tr>
+        <tr><td><span class="rule-tag">7</span></td><td>Move along natural curves</td><td>Rigid straight diagonal path</td><td>Curved motion path feels natural</td><td>#11</td></tr>
+        <tr><td><span class="rule-tag">8</span></td><td>Pulse to confirm success</td><td>Label changes with no feedback</td><td>Single gentle 300ms pulse</td><td>#06</td></tr>
+        <tr><td><span class="rule-tag">9</span></td><td>Ease-in-out for moving objects</td><td>Constant linear speed feels stiff</td><td>Smooth acceleration and deceleration</td><td>#03, #11</td></tr>
+        <tr><td><span class="rule-tag">10</span></td><td>Start popovers at 0.95 scale</td><td>Zooms in from a tiny pinprick</td><td>Enters smoothly from 0.95 scale</td><td>#01, #09</td></tr>
+        <tr><td><span class="rule-tag">11</span></td><td>Open from the trigger button</td><td>Appears from arbitrary screen center</td><td>Expands outward from the clicked button</td><td>#01, #09</td></tr>
+        <tr><td><span class="rule-tag">12</span></td><td>Close toward the trigger button</td><td>Disappears in a random direction</td><td>Returns back toward the button that opened it</td><td>#01, #12</td></tr>
+        <tr><td><span class="rule-tag">13</span></td><td>Avoid bouncy springs in daily UI</td><td>Excessive rubber-band wobbling</td><td>Settles cleanly with zero bounce</td><td>#03, #13</td></tr>
+        <tr><td><span class="rule-tag">14</span></td><td>Track cursor 1:1 while dragging</td><td>Animation lag makes drag feel sluggish</td><td>Direct 1:1 tracking, animate on release</td><td>#08</td></tr>
+        <tr><td><span class="rule-tag">15</span></td><td>Make exit animations 20% faster</td><td>Closing takes just as long as opening</td><td>Closing finishes 20% quicker than opening</td><td>#01, #09, #12</td></tr>
+        <tr><td><span class="rule-tag">16</span></td><td>Overlap outgoing and incoming views</td><td>Blank flickering frame between steps</td><td>Old and new screens crossfade concurrently</td><td>#14</td></tr>
+        <tr><td><span class="rule-tag">17</span></td><td>Use masks for reveals and color</td><td>Opacity crossfades produce blurry text</td><td>Clean clip mask reveals content sharply</td><td>#07</td></tr>
+        <tr><td><span class="rule-tag">18</span></td><td>Crossfade icons with scale and blur</td><td>Abrupt cut or muddy opacity crossfade</td><td>Scale down and subtle blur during crossfade</td><td>#04</td></tr>
+        <tr><td><span class="rule-tag">19</span></td><td>Add elastic resistance at boundaries</td><td>Hard brick-wall stop at scroll edges</td><td>Smooth diminishing resistance past edges</td><td>#08</td></tr>
+        <tr><td><span class="rule-tag">20</span></td><td>Expand cards directly into views</td><td>Card unmounts and separate modal pops up</td><td>Direct geometric expansion maintains context</td><td>#15</td></tr>
       </tbody>
     </table>
   </div>
@@ -1181,18 +1160,18 @@
   <div class="toolbar">
     <div class="tool-group">
       <span class="tool-label">Filter:</span>
-      <button class="chip active" data-filter="all">All (20 Rules)</button>
-      <button class="chip" data-filter="timing">Timing & Curves</button>
-      <button class="chip" data-filter="spatial">Spatial & Origins</button>
-      <button class="chip" data-filter="feedback">Feedback & Gestures</button>
-      <button class="chip" data-filter="orchestration">Orchestration</button>
+      <button class="chip active" data-filter="all">All (15)</button>
+      <button class="chip" data-filter="timing">Timing &amp; Speed</button>
+      <button class="chip" data-filter="spatial">Spatial &amp; Origin</button>
+      <button class="chip" data-filter="feedback">User Feedback</button>
+      <button class="chip" data-filter="orchestration">Transitions</button>
     </div>
     <div class="tool-group">
       <span class="tool-label">Speed:</span>
       <button class="chip active" data-speed="1">1x</button>
       <button class="chip" data-speed="2">0.5x</button>
-      <button class="chip" data-speed="4">0.25x Slow-Mo</button>
-      <button class="btn-action" id="replay-all-btn">▶ Trigger All</button>
+      <button class="chip" data-speed="4">0.25x</button>
+      <button class="btn-action" id="replay-all-btn">▶ Replay All</button>
     </div>
   </div>
 </header>
@@ -1204,16 +1183,16 @@
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">01</span>
-        <h2>Dropdown & Popover</h2>
+        <h2>Dropdown Menu</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 1</span><span class="pill">Rule 2</span><span class="pill">Rule 10</span><span class="pill">Rule 11</span><span class="pill">Rule 15</span>
       </div>
     </div>
-    <p class="demo-note">Ease-out, 200ms enter / 160ms exit, scale(0.95), origin at trigger. Avoids sluggish starts and pinprick scaling.</p>
+    <p class="demo-note">Opens quickly with ease-out from 0.95 scale, originating from the clicked button.</p>
     <div class="pair">
       <div class="stage" data-variant="bad" data-demo="dropdown">
-        <span class="label">Before</span>
+        <span class="label">Before (Slow start)</span>
         <div class="dropdown">
           <button class="trigger" aria-expanded="false">Options</button>
           <div class="menu" role="menu">
@@ -1224,7 +1203,7 @@
         </div>
       </div>
       <div class="stage" data-variant="good" data-demo="dropdown">
-        <span class="label">After</span>
+        <span class="label">After (Responsive)</span>
         <div class="dropdown">
           <button class="trigger" aria-expanded="false">Options</button>
           <div class="menu" role="menu">
@@ -1236,14 +1215,14 @@
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View CSS Diff</button>
+      <button class="code-toggle">▸ View Code</button>
       <!-- audit-motion:disable -->
       <div class="code-content">
-<span class="code-diff-bad">/* Before: 600ms ease-in, scale(0), center */
+<span class="code-diff-bad">/* Before: slow ease-in and center origin */
 transition: opacity 600ms ease-in, transform 600ms ease-in;
-transform: scale(0); /* default origin */</span>
+transform: scale(0); /* default center origin */</span>
 
-<span class="code-diff-good">/* After: 200ms in / 160ms out, scale(0.95), origin at trigger */
+<span class="code-diff-good">/* After: quick 200ms enter, scale(0.95), origin at button */
 transform-origin: top left;
 transition: opacity 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
 .dropdown.open .menu { transform: scale(1); transition-duration: 200ms; }</span>
@@ -1257,31 +1236,31 @@ transition: opacity 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">02</span>
-        <h2>Press & Tap Feedback</h2>
+        <h2>Press Feedback</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 4</span>
       </div>
     </div>
-    <p class="demo-note">Clickable surface shrinks to scale(0.97) over ~150ms while held. Confirms physical touch without disorienting text.</p>
+    <p class="demo-note">Subtle scale to 0.97 while held down provides clear physical feedback that a click was registered.</p>
     <div class="pair">
       <div class="stage" data-variant="bad">
-        <span class="label">Before (Dead click)</span>
+        <span class="label">Before (No state)</span>
         <button class="press-btn">Add to Cart</button>
       </div>
       <div class="stage" data-variant="good">
-        <span class="label">After (0.97 scale)</span>
+        <span class="label">After (Press state)</span>
         <button class="press-btn">Add to Cart</button>
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View CSS Diff</button>
+      <button class="code-toggle">▸ View Code</button>
       <!-- audit-motion:disable -->
       <div class="code-content">
 <span class="code-diff-bad">/* Before: no interactive state */
 .press-btn { transition: none; }</span>
 
-<span class="code-diff-good">/* After: scale(0.97) on active */
+<span class="code-diff-good">/* After: scale(0.97) on click */
 .press-btn { transition: transform 150ms ease-out; }
 .press-btn:active { transform: scale(0.97); }</span>
       </div>
@@ -1289,40 +1268,40 @@ transition: opacity 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-
     </div>
   </section>
 
-  <!-- 03 Switch Knob -->
+  <!-- 03 Toggle Switch -->
   <section class="demo" data-category="feedback timing" id="demo-03">
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">03</span>
-        <h2>Switch Knob Physics</h2>
+        <h2>Toggle Switch</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 5</span><span class="pill">Rule 9</span><span class="pill">Rule 13</span>
       </div>
     </div>
-    <p class="demo-note">~12% area-preserving stretch while traveling with ease-in-out. Critically damped with zero wobbling overshoot.</p>
+    <p class="demo-note">A subtle stretch while sliding gives the toggle knob a natural, fluid response.</p>
     <div class="pair">
       <div class="stage" data-variant="bad">
-        <span class="label">Before (Rigid / Linear)</span>
+        <span class="label">Before (Rigid)</span>
         <button class="switch" role="switch" aria-checked="false" aria-label="Notifications">
           <span class="knob"></span>
         </button>
       </div>
       <div class="stage" data-variant="good">
-        <span class="label">After (12% Stretch)</span>
+        <span class="label">After (Fluid)</span>
         <button class="switch" role="switch" aria-checked="false" aria-label="Notifications">
           <span class="knob"></span>
         </button>
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View CSS Diff</button>
+      <button class="code-toggle">▸ View Code</button>
       <!-- audit-motion:disable -->
       <div class="code-content">
-<span class="code-diff-bad">/* Before: linear travel, no mass deformation */
+<span class="code-diff-bad">/* Before: rigid linear motion */
 .knob { transition: transform 380ms linear; }</span>
 
-<span class="code-diff-good">/* After: stretch 1.12x on X, compress 0.89x on Y, ease-in-out */
+<span class="code-diff-good">/* After: smooth ease-in-out with slight stretch while moving */
 .knob { transition: transform 250ms cubic-bezier(0.77, 0, 0.175, 1); }
 .knob.moving { transform: scaleX(1.12) scaleY(0.89); }</span>
       </div>
@@ -1330,21 +1309,21 @@ transition: opacity 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-
     </div>
   </section>
 
-  <!-- 04 Icon Swap -->
+  <!-- 04 Icon Transition -->
   <section class="demo" data-category="orchestration" id="demo-04">
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">04</span>
-        <h2>Icon State Swap</h2>
+        <h2>Icon Change</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 18</span>
       </div>
     </div>
-    <p class="demo-note">Scale (0.6) + opacity + 4px blur, overlapping. Avoids abrupt cuts or muddy opacity-only crossfades.</p>
+    <p class="demo-note">Fading and scaling simultaneously avoids sudden cuts when an icon state updates.</p>
     <div class="pair">
       <div class="stage" data-variant="bad">
-        <span class="label">Before (Hard swap)</span>
+        <span class="label">Before (Instant cut)</span>
         <button class="icon-btn" aria-pressed="false">
           <span class="icon-stack">
             <svg class="icon icon-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
@@ -1354,7 +1333,7 @@ transition: opacity 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-
         </button>
       </div>
       <div class="stage" data-variant="good">
-        <span class="label">After (Scale + Blur)</span>
+        <span class="label">After (Smooth transition)</span>
         <button class="icon-btn" aria-pressed="false">
           <span class="icon-stack">
             <svg class="icon icon-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
@@ -1365,13 +1344,13 @@ transition: opacity 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View CSS Diff</button>
+      <button class="code-toggle">▸ View Code</button>
       <!-- audit-motion:disable -->
       <div class="code-content">
-<span class="code-diff-bad">/* Before: display: none hard swap */
+<span class="code-diff-bad">/* Before: sudden instant cut */
 .icon-btn[aria-pressed="true"] .icon-copy { display: none; }</span>
 
-<span class="code-diff-good">/* After: 160ms scale(0.6) + blur(4px) + opacity crossfade */
+<span class="code-diff-good">/* After: scale and opacity crossfade */
 .icon { transition: opacity 160ms ease-out, transform 160ms ease-out, filter 160ms ease-out; }
 .icon-check { opacity: 0; transform: scale(0.6); filter: blur(4px); }</span>
       </div>
@@ -1384,16 +1363,16 @@ transition: opacity 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">05</span>
-        <h2>List Cascade Stagger</h2>
+        <h2>List Loading</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 1</span><span class="pill">Rule 3</span>
       </div>
     </div>
-    <p class="demo-note">30ms stagger per row with ease-out, total capped &lt;300ms. Avoids 120ms delays that keep the user waiting.</p>
+    <p class="demo-note">A fast 30ms stagger between rows feels lively without making users wait.</p>
     <div class="pair">
       <div class="stage" data-variant="bad">
-        <span class="label">Before (120ms stagger)</span>
+        <span class="label">Before (120ms delay)</span>
         <ul class="list run">
           <li class="row" style="--i:0"><span class="dot"></span>Inbox</li>
           <li class="row" style="--i:1"><span class="dot"></span>Starred</li>
@@ -1404,7 +1383,7 @@ transition: opacity 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-
         <button class="replay-btn" data-replay>Replay</button>
       </div>
       <div class="stage" data-variant="good">
-        <span class="label">After (30ms stagger)</span>
+        <span class="label">After (30ms cascade)</span>
         <ul class="list run">
           <li class="row" style="--i:0"><span class="dot"></span>Inbox</li>
           <li class="row" style="--i:1"><span class="dot"></span>Starred</li>
@@ -1416,14 +1395,14 @@ transition: opacity 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View CSS Diff</button>
+      <button class="code-toggle">▸ View Code</button>
       <!-- audit-motion:disable -->
       <div class="code-content">
-<span class="code-diff-bad">/* Before: 120ms stagger per row */
+<span class="code-diff-bad">/* Before: long 120ms delay per row */
 animation: row-in 220ms ease-in both;
 animation-delay: calc(var(--i) * 120ms);</span>
 
-<span class="code-diff-good">/* After: 30ms stagger with ease-out */
+<span class="code-diff-good">/* After: quick 30ms cascade with ease-out */
 animation: row-in 200ms cubic-bezier(0.23, 1, 0.32, 1) both;
 animation-delay: calc(var(--i) * 30ms);</span>
       </div>
@@ -1436,35 +1415,35 @@ animation-delay: calc(var(--i) * 30ms);</span>
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">06</span>
-        <h2>Confirmation Pulse</h2>
+        <h2>Save Confirmation</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 8</span>
       </div>
     </div>
-    <p class="demo-note">Label change plus one single gentle pulse (peak 1.06, 300ms). Never loop or repeat indefinitely.</p>
+    <p class="demo-note">A brief single pulse confirms that the change was saved without distracting looping animations.</p>
     <div class="pair">
       <div class="stage" data-variant="bad">
-        <span class="label">Before (No pulse)</span>
+        <span class="label">Before (Static label)</span>
         <button class="save-btn" data-save>
           <span class="save-dot"></span><span class="save-label">Save</span>
         </button>
       </div>
       <div class="stage" data-variant="good">
-        <span class="label">After (Single 1.06 pulse)</span>
+        <span class="label">After (Pulse confirm)</span>
         <button class="save-btn" data-save>
           <span class="save-dot"></span><span class="save-label">Save</span>
         </button>
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View CSS Diff</button>
+      <button class="code-toggle">▸ View Code</button>
       <!-- audit-motion:disable -->
       <div class="code-content">
-<span class="code-diff-bad">/* Before: plain text swap with zero physical feedback */
+<span class="code-diff-bad">/* Before: static label change with no motion */
 label.textContent = "Saved";</span>
 
-<span class="code-diff-good">/* After: label swap + single scale(1.06) pulse over 300ms */
+<span class="code-diff-good">/* After: label update + single 300ms pulse */
 button.animate([
   { transform: 'scale(1)' },
   { transform: 'scale(1.06)' },
@@ -1480,16 +1459,16 @@ button.animate([
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">07</span>
-        <h2>Tab Content Handoff</h2>
+        <h2>Tab Switch</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 17</span>
       </div>
     </div>
-    <p class="demo-note">Mask/clip reveal avoids muddy overlapping text during crossfade transitions.</p>
+    <p class="demo-note">Wiping content with a clean mask prevents overlapping or ghosted text during transitions.</p>
     <div class="pair">
       <div class="stage" data-variant="bad" data-tabs>
-        <span class="label">Before (Muddy crossfade)</span>
+        <span class="label">Before (Ghosted text)</span>
         <div class="tabs">
           <div class="tablist" role="tablist">
             <button role="tab" aria-selected="true">Overview</button>
@@ -1502,7 +1481,7 @@ button.animate([
         </div>
       </div>
       <div class="stage" data-variant="good" data-tabs>
-        <span class="label">After (Clip-path mask)</span>
+        <span class="label">After (Clean mask)</span>
         <div class="tabs">
           <div class="tablist" role="tablist">
             <button role="tab" aria-selected="true">Overview</button>
@@ -1516,7 +1495,7 @@ button.animate([
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View CSS Diff</button>
+      <button class="code-toggle">▸ View Code</button>
       <!-- audit-motion:disable -->
       <div class="code-content">
 <span class="code-diff-bad">/* Before: opacity crossfade causing ghosted text overlap */
@@ -1536,35 +1515,35 @@ button.animate([
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">08</span>
-        <h2>Drag Limits & Rubber Band</h2>
+        <h2>Card Dragging</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 14</span><span class="pill">Rule 19</span>
       </div>
     </div>
-    <p class="demo-note">1:1 pointer tracking while dragging (no laggy transitions), diminishing resistance past bounds, spring settle.</p>
+    <p class="demo-note">Tracks cursor 1:1 during dragging without animation lag, with elastic resistance at limits.</p>
     <div class="pair">
       <div class="stage" data-variant="bad">
-        <span class="label">Before (Hard wall)</span>
+        <span class="label">Before (Hard stop)</span>
         <div class="track">
           <div class="drag-thumb" role="slider" tabindex="0" aria-label="Drag sample, before" aria-valuenow="0"></div>
         </div>
       </div>
       <div class="stage" data-variant="good">
-        <span class="label">After (Rubber band)</span>
+        <span class="label">After (Elastic limit)</span>
         <div class="track">
           <div class="drag-thumb" role="slider" tabindex="0" aria-label="Drag sample, after" aria-valuenow="0"></div>
         </div>
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View Code Diff</button>
+      <button class="code-toggle">▸ View Code</button>
       <!-- audit-motion:disable -->
       <div class="code-content">
-<span class="code-diff-bad">/* Before: hard stop at 120px */
+<span class="code-diff-bad">/* Before: hard abrupt stop at edge */
 if (x &gt; 120) x = 120;</span>
 
-<span class="code-diff-good">/* After: Apple-style logarithmic rubber band formula */
+<span class="code-diff-good">/* After: smooth diminishing resistance past boundary */
 const rubberBand = (x, dim) =&gt; (1 - 1 / ((x * 0.55) / dim + 1)) * dim;
 if (x &gt; 120) x = 120 + rubberBand(x - 120, 54);</span>
       </div>
@@ -1577,16 +1556,16 @@ if (x &gt; 120) x = 120 + rubberBand(x - 120, 54);</span>
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">09</span>
-        <h2>Modal Dialog Framing</h2>
+        <h2>Modal Dialog</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 2</span><span class="pill">Rule 10</span><span class="pill">Rule 11</span><span class="pill">Rule 15</span>
       </div>
     </div>
-    <p class="demo-note">200ms enter / 160ms exit from scale(0.95), origin rooted toward trigger. Avoids scale(0.2) from screen center.</p>
+    <p class="demo-note">Opens smoothly from the clicked button rather than zooming in from the center of the screen.</p>
     <div class="pair">
       <div class="stage" data-variant="bad" data-demo="modal">
-        <span class="label">Before (Center scale 0.2)</span>
+        <span class="label">Before (Screen center)</span>
         <button class="action-btn modal-btn">Open Dialog</button>
         <div class="modal-dialog">
           <div class="modal-title">Delete Project?</div>
@@ -1595,7 +1574,7 @@ if (x &gt; 120) x = 120 + rubberBand(x - 120, 54);</span>
         </div>
       </div>
       <div class="stage" data-variant="good" data-demo="modal">
-        <span class="label">After (Trigger origin 0.95)</span>
+        <span class="label">After (Button origin)</span>
         <button class="action-btn modal-btn">Open Dialog</button>
         <div class="modal-dialog">
           <div class="modal-title">Delete Project?</div>
@@ -1605,14 +1584,14 @@ if (x &gt; 120) x = 120 + rubberBand(x - 120, 54);</span>
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View CSS Diff</button>
+      <button class="code-toggle">▸ View Code</button>
       <!-- audit-motion:disable -->
       <div class="code-content">
-<span class="code-diff-bad">/* Before: scale(0.2), center origin, 500ms ease-in */
+<span class="code-diff-bad">/* Before: scale(0.2) from arbitrary screen center */
 transform: scale(0.2); /* default origin */
 transition: 500ms ease-in;</span>
 
-<span class="code-diff-good">/* After: scale(0.95), origin at trigger, 200ms in / 160ms out */
+<span class="code-diff-good">/* After: scale(0.95), origin rooted at the button */
 transform: scale(0.95); transform-origin: 50% 120%;
 transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
 .modal-dialog.open { transform: scale(1); transition-duration: 200ms; }</span>
@@ -1626,16 +1605,16 @@ transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">10</span>
-        <h2>Secondary Detail Settle</h2>
+        <h2>Card Details</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 6</span>
       </div>
     </div>
-    <p class="demo-note">Badge &amp; secondary tags settle +50ms after parent container settles. Prevents rigid, un-choreographed pops.</p>
+    <p class="demo-note">Letting badges settle 50ms after the card gives a calm, structured entrance.</p>
     <div class="pair">
       <div class="stage" data-variant="bad">
-        <span class="label">Before (Simultaneous)</span>
+        <span class="label">Before (All at once)</span>
         <div class="detail-card">
           <div class="card-header"><span class="card-title">Production</span><span class="card-badge">Active</span></div>
           <div class="card-meta">Deployed 4m ago · 99.98% uptime</div>
@@ -1643,7 +1622,7 @@ transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
         <button class="replay-btn trigger-card-replay" style="margin-top:10px;">Replay</button>
       </div>
       <div class="stage" data-variant="good">
-        <span class="label">After (+50ms Stagger)</span>
+        <span class="label">After (50ms offset)</span>
         <div class="detail-card">
           <div class="card-header"><span class="card-title">Production</span><span class="card-badge">Active</span></div>
           <div class="card-meta">Deployed 4m ago · 99.98% uptime</div>
@@ -1652,7 +1631,7 @@ transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View CSS Diff</button>
+      <button class="code-toggle">▸ View Code</button>
       <!-- audit-motion:disable -->
       <div class="code-content">
 <span class="code-diff-bad">/* Before: badge snaps in at the exact same instant */
@@ -1673,16 +1652,16 @@ transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">11</span>
-        <h2>Natural Motion Arcs</h2>
+        <h2>Curved Path</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 7</span><span class="pill">Rule 9</span>
       </div>
     </div>
-    <p class="demo-note">Physical objects travel in curved arcs with ease-in-out, rather than robotic straight-line diagonals.</p>
+    <p class="demo-note">Moving along a subtle curve looks more natural than a rigid straight line.</p>
     <div class="pair">
       <div class="stage" data-variant="bad">
-        <span class="label">Before (Straight Line)</span>
+        <span class="label">Before (Straight line)</span>
         <div class="arc-arena">
           <div class="arc-target"></div>
           <div class="arc-ball"></div>
@@ -1690,7 +1669,7 @@ transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
         <button class="replay-btn trigger-arc-btn">Animate</button>
       </div>
       <div class="stage" data-variant="good">
-        <span class="label">After (Physical Arc)</span>
+        <span class="label">After (Curved path)</span>
         <div class="arc-arena">
           <div class="arc-target"></div>
           <div class="arc-ball"></div>
@@ -1699,14 +1678,14 @@ transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View CSS Diff</button>
+      <button class="code-toggle">▸ View Code</button>
       <!-- audit-motion:disable -->
       <div class="code-content">
 <span class="code-diff-bad">/* Before: linear straight diagonal line */
 transition: transform 400ms linear;
 transform: translate(180px, 60px);</span>
 
-<span class="code-diff-good">/* After: curved parabolic arc with ease-in-out */
+<span class="code-diff-good">/* After: curved path with ease-in-out */
 offset-path: path("M 0 0 Q 70 -30, 180 60");
 animation: arc-motion 300ms cubic-bezier(0.77, 0, 0.175, 1) forwards;</span>
       </div>
@@ -1719,23 +1698,23 @@ animation: arc-motion 300ms cubic-bezier(0.77, 0, 0.175, 1) forwards;</span>
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">12</span>
-        <h2>Exit Toward Trigger</h2>
+        <h2>Menu Close</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 12</span><span class="pill">Rule 15</span>
       </div>
     </div>
-    <p class="demo-note">Dismissed element retreats toward the trigger that spawned it, ~20% faster than entry.</p>
+    <p class="demo-note">Closing back toward the button that opened it feels predictable and grounded.</p>
     <div class="pair">
       <div class="stage" data-variant="bad" data-demo="toast">
-        <span class="label">Before (Slides away)</span>
+        <span class="label">Before (Drifts down)</span>
         <div class="toast-container">
           <div class="toast"><span>File saved to cloud</span><button class="toast-close">✕</button></div>
         </div>
         <button class="replay-btn trigger-toast-btn">Show Toast</button>
       </div>
       <div class="stage" data-variant="good" data-demo="toast">
-        <span class="label">After (Returns to trigger)</span>
+        <span class="label">After (Closes to button)</span>
         <div class="toast-container">
           <div class="toast"><span>File saved to cloud</span><button class="toast-close">✕</button></div>
         </div>
@@ -1743,13 +1722,13 @@ animation: arc-motion 300ms cubic-bezier(0.77, 0, 0.175, 1) forwards;</span>
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View CSS Diff</button>
+      <button class="code-toggle">▸ View Code</button>
       <!-- audit-motion:disable -->
       <div class="code-content">
-<span class="code-diff-bad">/* Before: falls off screen away from cause */
+<span class="code-diff-bad">/* Before: drifts down away from original button */
 .toast.closing { opacity: 0; transform: translateY(40px); }</span>
 
-<span class="code-diff-good">/* After: shrinks toward trigger origin, 20% shorter duration */
+<span class="code-diff-good">/* After: returns toward trigger with 20% shorter duration */
 .toast.closing {
   opacity: 0;
   transform: translateY(-8px) scale(0.96);
@@ -1765,37 +1744,37 @@ animation: arc-motion 300ms cubic-bezier(0.77, 0, 0.175, 1) forwards;</span>
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">13</span>
-        <h2>Spring Damping vs Wobble</h2>
+        <h2>Spring Settle</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 13</span>
       </div>
     </div>
-    <p class="demo-note">Critically damped spring with zero wobble on routine UI. Reserve bounce for rare celebratory moments.</p>
+    <p class="demo-note">A clean spring settles promptly without cartoonish, distracting bounce.</p>
     <div class="pair">
       <div class="stage" data-variant="bad">
-        <span class="label">Before (Wobbly bounce)</span>
+        <span class="label">Before (Bouncy)</span>
         <div class="spring-pill">Notification</div>
         <button class="replay-btn trigger-spring-btn" style="margin-top:12px;">Trigger</button>
       </div>
       <div class="stage" data-variant="good">
-        <span class="label">After (Critically damped)</span>
+        <span class="label">After (Clean settle)</span>
         <div class="spring-pill">Notification</div>
         <button class="replay-btn trigger-spring-btn" style="margin-top:12px;">Trigger</button>
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View CSS Diff</button>
+      <button class="code-toggle">▸ View Code</button>
       <!-- audit-motion:disable -->
       <div class="code-content">
-<span class="code-diff-bad">/* Before: under-damped spring bouncing 4 times */
+<span class="code-diff-bad">/* Before: bouncy wobble with multiple oscillations */
 @keyframes spring-wobble {
   30% { transform: scale(1.18); }
   50% { transform: scale(0.92); }
   70% { transform: scale(1.08); }
 }</span>
 
-<span class="code-diff-good">/* After: critically damped, crisp settle with zero overshoot */
+<span class="code-diff-good">/* After: crisp settle with zero bounce */
 @keyframes spring-settle {
   0% { opacity: 0; transform: scale(0.92); }
   60% { opacity: 1; transform: scale(1.02); }
@@ -1811,16 +1790,16 @@ animation: arc-motion 300ms cubic-bezier(0.77, 0, 0.175, 1) forwards;</span>
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">14</span>
-        <h2>State Handoff Continuity</h2>
+        <h2>Step Transition</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 16</span>
       </div>
     </div>
-    <p class="demo-note">Overlap incoming and outgoing states. Avoid empty blank flashes caused by un-overlapped wait mode.</p>
+    <p class="demo-note">Crossfading old and new views simultaneously eliminates blank flickering frames.</p>
     <div class="pair">
       <div class="stage" data-variant="bad" data-demo="handoff">
-        <span class="label">Before (Empty void frame)</span>
+        <span class="label">Before (Blank flash)</span>
         <div class="view-frame">
           <div class="view-pane pane-a"><strong>Step 1:</strong> Select template</div>
           <div class="view-pane pane-b"><strong>Step 2:</strong> Configure parameters</div>
@@ -1828,7 +1807,7 @@ animation: arc-motion 300ms cubic-bezier(0.77, 0, 0.175, 1) forwards;</span>
         <button class="replay-btn trigger-handoff-btn" style="margin-top:8px;">Switch Step</button>
       </div>
       <div class="stage" data-variant="good" data-demo="handoff">
-        <span class="label">After (Overlapped handoff)</span>
+        <span class="label">After (Smooth transition)</span>
         <div class="view-frame">
           <div class="view-pane pane-a"><strong>Step 1:</strong> Select template</div>
           <div class="view-pane pane-b"><strong>Step 2:</strong> Configure parameters</div>
@@ -1837,10 +1816,10 @@ animation: arc-motion 300ms cubic-bezier(0.77, 0, 0.175, 1) forwards;</span>
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View CSS Diff</button>
+      <button class="code-toggle">▸ View Code</button>
       <!-- audit-motion:disable -->
       <div class="code-content">
-<span class="code-diff-bad">/* Before: un-overlapped wait mode leaves an awkward blank frame */
+<span class="code-diff-bad">/* Before: sequential fade creates a blank frame */
 .pane-a.fade-out { opacity: 0; transition: 180ms ease-in; }
 .pane-b.fade-in  { opacity: 1; transition: 180ms ease-out 180ms; }</span>
 
@@ -1857,38 +1836,50 @@ animation: arc-motion 300ms cubic-bezier(0.77, 0, 0.175, 1) forwards;</span>
     <div class="demo-head">
       <div class="demo-title-area">
         <span class="index">15</span>
-        <h2>Shared Element Morph (FLIP)</h2>
+        <h2>Card Expansion</h2>
       </div>
       <div class="rule-pills">
         <span class="pill">Rule 20</span>
       </div>
     </div>
-    <p class="demo-note">Shared layout morph preserves spatial object continuity instead of unmounting and popping in elsewhere.</p>
+    <p class="demo-note">Expanding directly into the detailed view maintains spatial continuity.</p>
     <div class="pair">
       <div class="stage" data-variant="bad" data-demo="flip">
-        <span class="label">Before (Disconnected pop)</span>
+        <span class="label">Before (Separate popup)</span>
         <div class="flip-stage">
           <div class="flip-card flip-thumb"><span style="font-size:0.72rem; font-weight:600;">Analytics</span></div>
           <div class="flip-modal-bad">
             <div style="font-size:0.8rem; font-weight:650; margin-bottom:4px;">Analytics Overview</div>
-            <div style="font-size:0.72rem; color:var(--muted);">Disconnected modal appearance</div>
+            <div style="font-size:0.72rem; color:var(--muted);">Disconnected popup</div>
           </div>
         </div>
         <span style="font-size:0.72rem; color:var(--muted); margin-top:4px;">Click card to toggle</span>
       </div>
       <div class="stage" data-variant="good" data-demo="flip">
-        <span class="label">After (Shared layout morph)</span>
+        <span class="label">After (Smooth expand)</span>
         <div class="flip-stage">
           <div class="flip-card flip-thumb">
             <span style="font-size:0.72rem; font-weight:600;">Analytics</span>
-            <div class="flip-extra" style="display:none; font-size:0.72rem; color:var(--muted); margin-top:6px;">Expanded metric details morph seamlessly</div>
+            <div class="flip-extra" style="display:none; font-size:0.72rem; color:var(--muted); margin-top:6px;">Expanded metric details in place</div>
           </div>
         </div>
         <span style="font-size:0.72rem; color:var(--muted); margin-top:4px;">Click card to toggle</span>
       </div>
     </div>
     <div class="code-drawer">
-      <button class="code-toggle">▸ View Code Diff</button>
+      <button class="code-toggle">▸ View Code</button>
+      <!-- audit-motion:disable -->
+      <div class="code-content">
+<span class="code-diff-bad">/* Before: unmounts card and opens separate popup */
+&lt;Card onClick={openModal} /&gt;
+{open &amp;&amp; &lt;Modal&gt;...&lt;/Modal&gt;}</span>
+
+<span class="code-diff-good">/* After: shared layout animation expands in place */
+&lt;motion.div layoutId="card-analytics"&gt;...&lt;/motion.div&gt;</span>
+      </div>
+      <!-- audit-motion:enable -->
+    </div>
+  </section>
       <!-- audit-motion:disable -->
       <div class="code-content">
 <span class="code-diff-bad">/* Before: unmounts card and renders separate modal */
@@ -1925,10 +1916,10 @@ animation: arc-motion 300ms cubic-bezier(0.77, 0, 0.175, 1) forwards;</span>
     const isLight = document.documentElement.getAttribute("data-theme") === "light";
     if (isLight) {
       document.documentElement.removeAttribute("data-theme");
-      themeBtn.textContent = "☼ Light Mode";
+      themeBtn.textContent = "☼ Light Theme";
     } else {
       document.documentElement.setAttribute("data-theme", "light");
-      themeBtn.textContent = "☾ Obsidian Theme";
+      themeBtn.textContent = "☾ Dark Theme";
     }
   });
 
@@ -1937,7 +1928,7 @@ animation: arc-motion 300ms cubic-bezier(0.77, 0, 0.175, 1) forwards;</span>
   const matrixPanel = document.getElementById("matrix-panel");
   matrixBtn.addEventListener("click", () => {
     matrixPanel.classList.toggle("open");
-    matrixBtn.textContent = matrixPanel.classList.contains("open") ? "✕ Hide Matrix" : "☰ All 20 Rules Matrix";
+    matrixBtn.textContent = matrixPanel.classList.contains("open") ? "✕ Close Rules" : "☰ Rule Overview";
   });
 
   // Filter chips

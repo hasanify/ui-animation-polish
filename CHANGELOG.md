@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/hasanify/ui-animation-polish/compare/v1.0.0...v1.1.0) (2026-11-08)
+
+
+### Features
+
+* **mcp:** add main entrypoint, start script, and direct npx configuration in readme ([524e223](https://github.com/hasanify/ui-animation-polish/commit/524e223f38eef86614746769910d33e10eacde73))
+
 # 1.0.0 (2026-11-08)
 
 

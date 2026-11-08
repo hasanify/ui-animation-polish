@@ -5,6 +5,9 @@ description: Production-grade rules, exact durations, easings, and copy-ready pr
 
 # UI Animation Polish
 
+> 🚀 **Live Interactive Demo:** [Open Before vs After Side-by-Side](https://hasanify.github.io/ui-animation-polish/examples/before-after.html)  
+> 📦 **Install via CLI:** `npx skills add hasanify/ui-animation-polish`
+
 Twenty rules that separate "it moves" from "it feels good". Each is a concrete before → after change, so apply them as specific numbers and properties rather than vague taste.
 
 Four principles sit underneath all of them. When a situation isn't covered by a rule, reason from these:
@@ -22,18 +25,18 @@ Load only what the task needs; the rules below are enough for most fixes.
 
 | Path | Open when |
 | --- | --- |
-| `references/easing-and-duration.md` | Choosing a curve, a duration, a spring, or choreographing several elements |
-| `references/component-recipes.md` | Building a specific component (modal, toast, tabs, switch, drag, carousel, …) |
-| `references/platforms.md` | The stack is Vue, Svelte, SwiftUI, React Native, Flutter, GSAP, WAAPI, Tailwind, or View Transitions |
-| `references/accessibility-and-performance.md` | Reduced motion, vestibular safety, jank, FLIP, blur cost, frame budgets |
-| `references/review-and-audit.md` | Auditing a codebase, scoring, or writing the report |
-| `references/anti-patterns.md` | A motion smell needs a name and an exact replacement |
-| `references/sources.md` | Verifying where a default comes from |
-| `scripts/audit-motion.mjs` | You can run commands and the task is a review: `node scripts/audit-motion.mjs <path>` |
-| `assets/motion-tokens.css` | Writing CSS and needs the tokens |
-| `assets/motion-presets.ts` | Writing React + Motion and wants typed presets |
-| `examples/before-after.html` | The user wants to see or feel the difference |
-| `examples/react/` | Copy-ready React components for popover, stagger, press, icon swap, toggle, card→detail |
+| [`references/easing-and-duration.md`](https://github.com/hasanify/ui-animation-polish/blob/main/references/easing-and-duration.md) | Choosing a curve, a duration, a spring, or choreographing several elements |
+| [`references/component-recipes.md`](https://github.com/hasanify/ui-animation-polish/blob/main/references/component-recipes.md) | Building a specific component (modal, toast, tabs, switch, drag, carousel, …) |
+| [`references/platforms.md`](https://github.com/hasanify/ui-animation-polish/blob/main/references/platforms.md) | The stack is Vue, Svelte, SwiftUI, React Native, Flutter, GSAP, WAAPI, Tailwind, or View Transitions |
+| [`references/accessibility-and-performance.md`](https://github.com/hasanify/ui-animation-polish/blob/main/references/accessibility-and-performance.md) | Reduced motion, vestibular safety, jank, FLIP, blur cost, frame budgets |
+| [`references/review-and-audit.md`](https://github.com/hasanify/ui-animation-polish/blob/main/references/review-and-audit.md) | Auditing a codebase, scoring, or writing the report |
+| [`references/anti-patterns.md`](https://github.com/hasanify/ui-animation-polish/blob/main/references/anti-patterns.md) | A motion smell needs a name and an exact replacement |
+| [`references/sources.md`](https://github.com/hasanify/ui-animation-polish/blob/main/references/sources.md) | Verifying where a default comes from |
+| [`scripts/audit-motion.mjs`](https://github.com/hasanify/ui-animation-polish/blob/main/scripts/audit-motion.mjs) | You can run commands and the task is a review: `node scripts/audit-motion.mjs <path>` |
+| [`assets/motion-tokens.css`](https://github.com/hasanify/ui-animation-polish/blob/main/assets/motion-tokens.css) | Writing CSS and needs the tokens |
+| [`assets/motion-presets.ts`](https://github.com/hasanify/ui-animation-polish/blob/main/assets/motion-presets.ts) | Writing React + Motion and wants typed presets |
+| [`examples/before-after.html`](https://hasanify.github.io/ui-animation-polish/examples/before-after.html) | Interactive side-by-side demo ([Live Preview](https://hasanify.github.io/ui-animation-polish/examples/before-after.html)) |
+| [`examples/react/`](https://github.com/hasanify/ui-animation-polish/tree/main/examples/react) | Copy-ready React components for popover, stagger, press, icon swap, toggle, card→detail |
 
 ## How to use this skill
 
@@ -416,12 +419,12 @@ Work through this when auditing existing motion. Flag each hit with its rule num
 
 ## Reference map
 
-| Need | File |
+| Need | Guide |
 | --- | --- |
-| Curve, duration, spring, choreography | `references/easing-and-duration.md` |
-| Component-by-component code | `references/component-recipes.md` |
-| CSS, Tailwind, React, Vue, Svelte, SwiftUI, RN, Flutter, GSAP | `references/platforms.md` |
-| Reduced motion, vestibular safety, jank, FLIP | `references/accessibility-and-performance.md` |
-| Audit workflow, scoring rubric, report template | `references/review-and-audit.md` |
-| Smell → exact fix | `references/anti-patterns.md` |
-| Citations | `references/sources.md` |
+| Curve, duration, spring, choreography | [`references/easing-and-duration.md`](https://github.com/hasanify/ui-animation-polish/blob/main/references/easing-and-duration.md) |
+| Component-by-component code | [`references/component-recipes.md`](https://github.com/hasanify/ui-animation-polish/blob/main/references/component-recipes.md) |
+| CSS, Tailwind, React, Vue, Svelte, SwiftUI, RN, Flutter, GSAP | [`references/platforms.md`](https://github.com/hasanify/ui-animation-polish/blob/main/references/platforms.md) |
+| Reduced motion, vestibular safety, jank, FLIP | [`references/accessibility-and-performance.md`](https://github.com/hasanify/ui-animation-polish/blob/main/references/accessibility-and-performance.md) |
+| Audit workflow, scoring rubric, report template | [`references/review-and-audit.md`](https://github.com/hasanify/ui-animation-polish/blob/main/references/review-and-audit.md) |
+| Smell → exact fix | [`references/anti-patterns.md`](https://github.com/hasanify/ui-animation-polish/blob/main/references/anti-patterns.md) |
+| Citations | [`references/sources.md`](https://github.com/hasanify/ui-animation-polish/blob/main/references/sources.md) |

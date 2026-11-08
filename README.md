@@ -2,6 +2,8 @@
 
 [![skills.sh](https://skills.sh/b/hasanify/ui-animation-polish)](https://www.skills.sh/hasanify/ui-animation-polish/ui-animation-polish)
 
+> 🚀 **Live Interactive Demo:** [Open Before vs After Side-by-Side](https://hasanify.github.io/ui-animation-polish/examples/before-after.html)
+
 An agent skill plus tooling for motion that feels designed instead of default.
 
 Most "make it smooth" advice is taste. This repo turns it into numbers you can apply, review and lint: `150–250ms` popovers, `scale(0.95)` entrances, origin at the trigger, 30ms stagger, 20% faster exits, no bounce on everyday UI, rubber band at drag limits.

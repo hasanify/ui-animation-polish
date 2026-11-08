@@ -1,10 +1,41 @@
 {
   "name": "ui-animation-polish",
   "version": "1.1.0",
-  "private": true,
-  "description": "Agent skill and tooling for UI motion that feels polished",
+  "description": "Production-grade rules, tokens, and static motion auditor for UI animations, CSS transitions, and Framer Motion",
   "type": "module",
   "license": "MIT",
+  "bin": {
+    "ui-animation-polish": "./scripts/audit-motion.mjs",
+    "audit-motion": "./scripts/audit-motion.mjs"
+  },
+  "files": [
+    "scripts",
+    "assets",
+    "references",
+    "SKILL.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "animation",
+    "ui-animation",
+    "motion",
+    "micro-interactions",
+    "framer-motion",
+    "css-transitions",
+    "linter",
+    "agent-skill",
+    "claude-code",
+    "design-tokens"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hasanify/ui-animation-polish.git"
+  },
+  "homepage": "https://hasanify.github.io/ui-animation-polish/",
+  "bugs": {
+    "url": "https://github.com/hasanify/ui-animation-polish/issues"
+  },
   "scripts": {
     "test": "node --test",
     "audit": "node scripts/audit-motion.mjs",

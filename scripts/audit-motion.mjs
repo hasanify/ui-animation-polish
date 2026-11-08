@@ -434,6 +434,11 @@ Examples:
 }
 
 async function main(argv) {
+  if (argv.includes("mcp") || argv.includes("--mcp")) {
+    await import("./mcp-server.mjs");
+    return 0;
+  }
+
   const paths = [];
   let json = false;
   let failOn = "error";

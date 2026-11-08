@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Production-grade rules, tokens, and static motion auditor for UI animations, CSS transitions, and Framer Motion",
   "type": "module",
+  "main": "scripts/mcp-server.mjs",
   "license": "MIT",
   "bin": {
     "ui-animation-polish": "scripts/audit-motion.mjs",
@@ -41,8 +42,9 @@
     "url": "https://github.com/hasanify/ui-animation-polish/issues"
   },
   "scripts": {
-    "test": "node --test",
+    "start": "node scripts/mcp-server.mjs",
     "mcp": "node ./scripts/mcp-server.mjs",
+    "test": "node --test",
     "audit": "node scripts/audit-motion.mjs",
     "audit:examples": "node scripts/audit-motion.mjs examples",
     "audit:assets": "node scripts/audit-motion.mjs assets"

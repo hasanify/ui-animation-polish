@@ -77,6 +77,23 @@ Full options: `node scripts/audit-motion.mjs --help`.
 
 Run as a Model Context Protocol (MCP) server for Claude Desktop, Cursor, Antigravity, or other MCP-compatible clients:
 
+### 1. Direct configuration (Zero install via npx)
+
+Add to your `claude_desktop_config.json` or Cursor `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "ui-animation-polish": {
+      "command": "npx",
+      "args": ["-y", "ui-animation-mcp"]
+    }
+  }
+}
+```
+
+### 2. Run locally from source
+
 ```json
 {
   "mcpServers": {
@@ -88,7 +105,7 @@ Run as a Model Context Protocol (MCP) server for Claude Desktop, Cursor, Antigra
 }
 ```
 
-Or run directly via npm:
+Or test directly in terminal:
 
 ```bash
 npm run mcp

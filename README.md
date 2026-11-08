@@ -2,6 +2,8 @@
 
 [![skills.sh](https://skills.sh/b/hasanify/ui-animation-polish)](https://www.skills.sh/hasanify/ui-animation-polish/ui-animation-polish)
 
+![UI Animation Polish Banner](assets/social-preview.png)
+
 > 🚀 **Live Interactive Demo:** [Open Before vs After Side-by-Side](https://hasanify.github.io/ui-animation-polish/examples/before-after.html)
 
 An agent skill plus tooling for motion that feels designed instead of default.

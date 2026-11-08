@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/ui-animation-polish.svg?color=10b981&label=npm)](https://www.npmjs.com/package/ui-animation-polish)
 [![npm downloads](https://img.shields.io/npm/dm/ui-animation-polish.svg?color=10b981)](https://www.npmjs.com/package/ui-animation-polish)
-[![CI](https://img.shields.io/github/actions/workflow/status/hasanify/ui-animation-polish/ci.yml?branch=main&label=CI)](https://github.com/hasanify/ui-animation-polish/actions)
+[![CI](https://github.com/hasanify/ui-animation-polish/actions/workflows/ci.yml/badge.svg)](https://github.com/hasanify/ui-animation-polish/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![skills.sh](https://skills.sh/b/hasanify/ui-animation-polish)](https://www.skills.sh/hasanify/ui-animation-polish/ui-animation-polish)
 

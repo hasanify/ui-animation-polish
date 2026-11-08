@@ -5,9 +5,6 @@ description: Production-grade rules, exact durations, easings, and copy-ready pr
 
 # UI Animation Polish
 
-> 🚀 **Live Interactive Demo:** [Open Before vs After Side-by-Side](https://hasanify.github.io/ui-animation-polish/examples/before-after.html)  
-> 📦 **Install via CLI:** `npx skills add hasanify/ui-animation-polish`
-
 Twenty rules that separate "it moves" from "it feels good". Each is a concrete before → after change, so apply them as specific numbers and properties rather than vague taste.
 
 Four principles sit underneath all of them. When a situation isn't covered by a rule, reason from these:

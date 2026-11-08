@@ -5,9 +5,9 @@
   "type": "module",
   "license": "MIT",
   "bin": {
-    "ui-animation-polish": "./scripts/audit-motion.mjs",
-    "audit-motion": "./scripts/audit-motion.mjs",
-    "ui-animation-mcp": "./scripts/mcp-server.mjs"
+    "ui-animation-polish": "scripts/audit-motion.mjs",
+    "audit-motion": "scripts/audit-motion.mjs",
+    "ui-animation-mcp": "scripts/mcp-server.mjs"
   },
   "files": [
     "scripts",
@@ -34,7 +34,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/hasanify/ui-animation-polish.git"
+    "url": "git+https://github.com/hasanify/ui-animation-polish.git"
   },
   "homepage": "https://hasanify.github.io/ui-animation-polish/",
   "bugs": {

@@ -6,7 +6,8 @@
   "license": "MIT",
   "bin": {
     "ui-animation-polish": "./scripts/audit-motion.mjs",
-    "audit-motion": "./scripts/audit-motion.mjs"
+    "audit-motion": "./scripts/audit-motion.mjs",
+    "ui-animation-mcp": "./scripts/mcp-server.mjs"
   },
   "files": [
     "scripts",
@@ -26,7 +27,10 @@
     "linter",
     "agent-skill",
     "claude-code",
-    "design-tokens"
+    "design-tokens",
+    "mcp",
+    "mcp-server",
+    "model-context-protocol"
   ],
   "repository": {
     "type": "git",
@@ -38,11 +42,16 @@
   },
   "scripts": {
     "test": "node --test",
+    "mcp": "node ./scripts/mcp-server.mjs",
     "audit": "node scripts/audit-motion.mjs",
     "audit:examples": "node scripts/audit-motion.mjs examples",
     "audit:assets": "node scripts/audit-motion.mjs assets"
   },
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
   }
 }

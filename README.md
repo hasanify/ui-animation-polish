@@ -69,6 +69,33 @@ Suppress intentional violations without hiding real ones:
 
 Full options: `node scripts/audit-motion.mjs --help`.
 
+## Use as an MCP Server
+
+Run as a Model Context Protocol (MCP) server for Claude Desktop, Cursor, Antigravity, or other MCP-compatible clients:
+
+```json
+{
+  "mcpServers": {
+    "ui-animation-polish": {
+      "command": "node",
+      "args": ["<path-to-repo>/scripts/mcp-server.mjs"]
+    }
+  }
+}
+```
+
+Or run directly via npm:
+
+```bash
+npm run mcp
+```
+
+### Provided Tools & Resources:
+* **Tool `audit_motion`**: Scans files or source code for motion anti-patterns.
+* **Tool `get_motion_preset`**: Retrieves typed Framer Motion presets or CSS duration/easing tokens for common components.
+* **Tool `explain_rule`**: Explains any of the 20 animation rules with before/after comparisons and physical principles.
+* **Resources**: `motion://tokens/css`, `motion://presets/framer-motion`, and `motion://rules/all`.
+
 ## Use the numbers directly
 
 `assets/motion-tokens.css`:

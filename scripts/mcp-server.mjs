@@ -203,3 +203,4 @@ main().catch((err) => {
   process.stderr.write(`Fatal error starting MCP server: ${err?.stack || err}\n`);
   process.exit(1);
 });
+
